@@ -13,6 +13,7 @@ public class PlayerControls {
     private boolean isTargeting;
     private MenuType menuType;
     private Hra hra;
+    private Player player;
     
     public PlayerControls(MenuNavigator menuNavigator) {
         this.menuNavigator = menuNavigator;
@@ -50,6 +51,7 @@ public class PlayerControls {
                         this.hra = new Hra("files/saves/");
                         return;
                     }
+                    this.player= this.hra.getPlayer();
                     citacMapa.close();
                     citacPlayer.close();
                     break;
@@ -58,6 +60,7 @@ public class PlayerControls {
                     System.out.println("NEWGAME PRESSED");
                     this.menuNavigator.setMenuType(MenuType.NOMENU);
                     this.hra = new Hra("files/newGame/");
+                    this.player= this.hra.getPlayer();
                     break;
                 case EXITGAME:
                     System.out.println("EXITGAME PRESSED");
@@ -119,24 +122,32 @@ public class PlayerControls {
     public void leftArrow(){
         if(isTargeting){
             
+        } else{
+            this.player.checkAndMove(-1, 0);
         }
     }
     
     public void upArrow(){
         if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             this.menuNavigator.changeSelectedMenuObject(-1);
+        } else{
+            this.player.checkAndMove(0, -1);
         }
     }
     
     public void rightArrow(){
         if(isTargeting){
             
+        } else{
+            this.player.checkAndMove(1, 0);
         }
     }
     
     public void downArrow(){
        if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             this.menuNavigator.changeSelectedMenuObject(1);
+        } else{
+            this.player.checkAndMove(0, 1);
         }
     }
 }

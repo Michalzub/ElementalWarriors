@@ -53,4 +53,8 @@ public class Hra {
             }
         } 
     }
+    
+    public Player getPlayer() {
+        return this.player;
+    }
 }
