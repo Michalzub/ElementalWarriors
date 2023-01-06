@@ -24,9 +24,9 @@ public enum ItemType {
     MANALARGE("Large Mana Potion", 100);
 
     private String name;
-    private int sila;
+    private double sila;
 
-    ItemType (String name, int sila) {
+    ItemType (String name, double sila) {
         this.name = name;
         this.sila = sila;
     }
@@ -35,7 +35,7 @@ public enum ItemType {
         return this.name;
     }
 
-    public int getSila() {
+    public double getSila() {
         return this.sila;
     }
 }
