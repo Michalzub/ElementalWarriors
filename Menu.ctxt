@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Menu
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ MenuLmao\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Menu()
+comment2.params=
+comment2.target=void\ menuBuild()
+comment3.params=menuType
+comment3.target=void\ setMenuType(MenuType)
+comment4.params=
+comment4.target=java.util.ArrayList\ getMenuObjectList()
+comment5.params=
+comment5.target=MenuType\ getMenuType()
+numComments=6

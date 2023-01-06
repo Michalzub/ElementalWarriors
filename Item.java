@@ -46,7 +46,7 @@ public class Item {
         return this.typ.getName();
     }
 
-    public int getSila() {
+    public double getSila() {
         return this.typ.getSila();
     }
 

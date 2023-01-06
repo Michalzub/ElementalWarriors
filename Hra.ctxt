@@ -9,4 +9,6 @@ comment2.target=void\ changeMode()
 comment3.params=
 comment3.target=void\ saveGame()
 comment3.text=\r\n\ Ulo\u017E\u00ED\ hr\u00FA,\ e\u0161te\ nieje\ dokon\u010Den\u00E9\r\n
-numComments=4
+comment4.params=
+comment4.target=Player\ getPlayer()
+numComments=5

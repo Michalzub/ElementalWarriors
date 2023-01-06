@@ -76,28 +76,30 @@ public class Manazer {
         for (KeyEvent event : this.stlaceniaKlaves) {
             switch (event.getKeyCode()) {
                 case KeyEvent.VK_DOWN:
-                    Manazer.this.posliSpravu("moveDown");
+                    Manazer.this.posliSpravu("downArrow");
                     break;
                     
                 case KeyEvent.VK_UP:
-                    Manazer.this.posliSpravu("moveUp");
+                    Manazer.this.posliSpravu("upArrow");
                     break;
                     
                 case KeyEvent.VK_LEFT:
-                    Manazer.this.posliSpravu("moveLeft");
+                    Manazer.this.posliSpravu("leftArrow");
                     break;
                     
                 case KeyEvent.VK_RIGHT:
-                    Manazer.this.posliSpravu("moveRight");
+                    Manazer.this.posliSpravu("rightArrow");
                     break;
                     
                 case KeyEvent.VK_SPACE:
+                    Manazer.this.posliSpravu("space");
+                    break;
                 case KeyEvent.VK_ENTER:
-                    Manazer.this.posliSpravu("changeMode");
+                    Manazer.this.posliSpravu("enter");
                     break;
                     
-                case KeyEvent.VK_ESCAPE:
-                    Manazer.this.posliSpravu("exitGame");
+                case KeyEvent.VK_X:
+                    Manazer.this.posliSpravu("xKey");
                     break;
             }
         }

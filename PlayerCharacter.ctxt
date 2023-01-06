@@ -1,7 +1,12 @@
 #BlueJ class context
 comment0.target=PlayerCharacter
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ PlayerCharacter\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=PlayerCharacter()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ PlayerCharacter\r\n
-numComments=2
+comment1.params=element
+comment1.target=PlayerCharacter(Element)
+comment2.params=
+comment2.target=void\ attack()
+comment3.params=
+comment3.target=void\ elementalHit()
+comment4.params=
+comment4.target=void\ elementalEffect()
+numComments=5
