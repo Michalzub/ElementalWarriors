@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Policko
+comment0.text=\r\n\ \ Jednotliv\u00E9\ pol\u00ED\u010Dko\ na\ mape.\ \r\n\ \ Obsahuje\ obr\u00E1zok\ a\ jeho\ typ.\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.1\r\n
+comment1.params=pozX\ pozY\ typ
+comment1.target=Policko(int,\ int,\ TypPolicka)
+comment2.params=pozX\ pozY
+comment2.target=void\ nakresliObrazok(int,\ int)
+comment2.text=\r\n\ \ Zmen\u00ED\ polohu\ obr\u00E1zku\ a\ zobraz\u00ED\ ho.\r\n
+comment3.params=
+comment3.target=Obrazok\ getObrazok()
+comment4.params=
+comment4.target=void\ zmenaNaGrass()
+comment5.params=
+comment5.target=TypPolicka\ getTyp()
+numComments=6

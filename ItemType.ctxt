@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=ItemType
+comment0.text=\r\n\ \ Enum\ obsahuje\ r\u00F4zne\ typy\ itemov,\ ktor\u00E9\ maj\u00FA\ rozdielne\ vlastnosti.\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.1\r\n
+comment1.params=name\ sila
+comment1.target=ItemType(java.lang.String,\ int)
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment3.params=
+comment3.target=int\ getSila()
+numComments=4

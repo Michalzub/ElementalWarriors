@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Hra
+comment0.text=\r\n\ Vytvor\u00ED\ mapu,\ hr\u00E1\u010Da\ a\ mana\u017Eera,\ ktor\u00FD\ ich\ bude\ spravova\u0165.\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.1\r\n
+comment1.params=miesto
+comment1.target=Hra(java.lang.String)
+comment1.text=\r\n\ Kon\u0161truktor\ dostane\ miesto\ \u00FAlo\u017Eiska,\ pod\u013Ea\ ktor\u00E9ho\ vybere\ s\u00FAbor\ z\ kadia\u013E\ m\u00E1\ bra\u0165\ d\u00E1ta.\r\n
+comment2.params=
+comment2.target=void\ changeMode()
+comment3.params=
+comment3.target=void\ saveGame()
+comment3.text=\r\n\ Ulo\u017E\u00ED\ hr\u00FA,\ e\u0161te\ nieje\ dokon\u010Den\u00E9\r\n
+numComments=4

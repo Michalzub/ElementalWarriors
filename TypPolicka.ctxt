@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=TypPolicka
+comment0.text=\r\n\ Enum\ typov\ pol\u00ED\u010Dka\ obsahuje\ ich\ osobitn\u00E9\ \u010D\u00EDslo\ a\ obr\u00E1zok.\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.1\r\n
+comment1.params=type\ obrazok
+comment1.target=TypPolicka(int,\ java.lang.String)
+comment2.params=
+comment2.target=int\ getType()
+comment3.params=
+comment3.target=java.lang.String\ getObrazok()
+numComments=4

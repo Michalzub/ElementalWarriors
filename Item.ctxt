@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Item
+comment0.text=\r\n\ \ Samotn\u00FD\ Item\ ktor\u00FD\ sa\ bude\ uklada\u0165\ do\ hr\u00E1\u010Dovho\ invent\u00E1ra.\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.1\r\n
+comment1.params=
+comment1.target=Item()
+comment1.text=\r\n\ \ \ \r\n\ \ \ Vytvor\u00ED\ n\u00E1hodn\u00FD\ item.\r\n\r\n
+comment2.params=pozadovanyTyp
+comment2.target=void\ setTyp(java.lang.String)
+comment2.text=\r\n\ \ \ Nastav\u00ED\ typ\ itemu.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getName()
+comment4.params=
+comment4.target=int\ getSila()
+comment5.params=
+comment5.target=ItemType\ getType()
+numComments=6

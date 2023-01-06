@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=MainMenu
+comment0.text=\r\n\ Vytvor\u00ED\ main\ menu\ kde\ hr\u00E1\u010D\ dostane\ mo\u017Enos\u0165\ si\ vybra\u0165\ medzi\ "new\ game"\ a\ "load\ game".\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.1\r\n
+comment1.params=
+comment1.target=MainMenu()
+comment2.params=x\ y
+comment2.target=void\ vyberSuradnice(int,\ int)
+comment2.text=\r\n\ Pod\u013Ea\ toho\ kam\ hr\u00E1\u010D\ klikne\ tak\u00E1\ akcia\ sa\ vykon\u00E1.\r\n
+comment3.params=
+comment3.target=void\ exitGame()
+numComments=4
