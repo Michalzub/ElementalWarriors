@@ -10,13 +10,11 @@ import java.util.Scanner;
  */
 public class MainMenu {
     private Obrazok obrazok;
-    private int menuLevel;
     private boolean menu;
     private Manazer manazer;
     private Hra hra;
     public MainMenu() throws FileNotFoundException {
         // initialise instance variables
-        this.menuLevel = 0;
         this.menu = true;
         this.manazer = new Manazer();
         this.manazer.spravujObjekt(this);

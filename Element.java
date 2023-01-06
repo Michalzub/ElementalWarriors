@@ -27,12 +27,12 @@ public enum Element {
         return this.healthMultiplier;
     }
     public double getManaMultiplier() {
-        return this.healthMultiplier;
+        return this.manaMultiplier;
     }
     public double getDamageMultiplier() {
-        return this.healthMultiplier;
+        return this.damageMultiplier;
     }
     public double getSpeedMultiplier() {
-        return this.healthMultiplier;
+        return this.speedMultiplier;
     }
 }

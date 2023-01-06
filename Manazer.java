@@ -98,8 +98,8 @@ public class Manazer {
                     Manazer.this.posliSpravu("enter");
                     break;
                     
-                case KeyEvent.VK_ESCAPE:
-                    Manazer.this.posliSpravu("escape");
+                case KeyEvent.VK_X:
+                    Manazer.this.posliSpravu("xKey");
                     break;
             }
         }

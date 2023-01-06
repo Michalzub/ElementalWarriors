@@ -21,6 +21,7 @@ public class Menu {
                 this.menuObjectList.add(MenuObjectType.LOADGAME);
                 this.menuObjectList.add(MenuObjectType.NEWGAME);
                 this.menuObjectList.add(MenuObjectType.EXITGAME);
+                
                 break;
             case COMBATMENU:
                 this.menuObjectList.clear();
@@ -46,7 +47,17 @@ public class Menu {
         }
     }
     
+    public void setMenuType(MenuType menuType) {
+        this.menuType = menuType;
+        this.menuBuild();
+    }
+    
     public ArrayList<MenuObjectType> getMenuObjectList() {
         return this.menuObjectList;
     }
+    
+    public MenuType getMenuType() {
+        return this.menuType;
+    }
+    
 }
