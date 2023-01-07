@@ -8,8 +8,8 @@
 public enum MenuType {
     NOMENU("none",0,0),
     MAINMENU("files/obrazky/menu/mainMenu.png",250,250),
-    COMBATMENU("files/obrazky/menu/combatMenu.png",325,0),
-    ITEMMENU("files/obrazky/menu/combatMenu.png",325,0),
+    COMBATMENU("files/obrazky/menu/combatMenu.png",405,250),
+    ITEMMENU("files/obrazky/menu/combatMenu.png",405,250),
     PAUSEMENU("files/obrazky/menu/mainMenu.png",250,250);
     
     private Obrazok menuBackground;

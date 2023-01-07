@@ -77,4 +77,7 @@ public class Menu {
         return this.menuType;
     }
     
+    public void hideRemnants() {
+        
+    }
 }

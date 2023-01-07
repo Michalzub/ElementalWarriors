@@ -19,13 +19,9 @@ public class PlayerControls {
         this.menuNavigator = menuNavigator;
     }
     
-    public void mouseClick(){
-        
-    }
-    
     public void xKey(){
         this.menuNavigator.getSelectedMenuObject().getUnselectedPicture().skry();
-        this.menuNavigator.hideSelectedObject();
+        
         switch(this.menuNavigator.getMenuType()){
             case NOMENU:
                 this.menuNavigator.setMenuType(MenuType.PAUSEMENU);
@@ -35,6 +31,9 @@ public class PlayerControls {
                 break;
             case ITEMMENU:
                 this.menuNavigator.setMenuType(MenuType.COMBATMENU);
+                break;
+            default:
+                break;
         }
     }
     
@@ -42,6 +41,9 @@ public class PlayerControls {
         if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             switch(this.menuNavigator.getSelectedMenuObject()) {
                 case LOADGAME:
+                    if(this.game != null){
+                        this.game.hideRemnants();
+                    }
                     this.menuNavigator.hideSelectedObject();
                     this.menuNavigator.setMenuType(MenuType.NOMENU);
                     File mapa = new File("files/saves/mapa.txt");
@@ -51,17 +53,21 @@ public class PlayerControls {
                     if (citacMapa.hasNext() && citacPlayer.hasNext()) {
                         this.game = new Game("files/saves/");
                         return;
+                    } else{
+                        System.out.println("FILE NOT FOUND");
                     }
-                    this.player = this.game.getPlayer();
                     citacMapa.close();
                     citacPlayer.close();
-                    break;
-                    
+                    this.player = this.game.getPlayer();
+                    break;  
                 case NEWGAME:
+                    if(this.game != null){
+                        this.game.hideRemnants();
+                    }
                     this.menuNavigator.hideSelectedObject();
                     this.menuNavigator.setMenuType(MenuType.NOMENU);
                     this.game = new Game("files/newGame/");
-                    this.player= this.game.getPlayer();
+                    this.player = this.game.getPlayer();
                     break;
                 case EXITGAME:
                         this.game.saveGame();
@@ -120,32 +126,48 @@ public class PlayerControls {
     public void leftArrow(){
         if(isTargeting){
             
-        } else{
-            this.game.checkAndMove(-1, 0);
+        } else if(this.game.getMode() == GameMode.EXPLORATION) {
+            if(this.game.checkAndMove(-1, 0) == SpaceType.ENEMY) {
+                this.menuNavigator.setMenuType(MenuType.COMBATMENU);
+                this.menuNavigator.setSelectedObject(MenuType.COMBATMENU);
+                this.player.hidePlayer();
+            }
         }
     }
     
     public void upArrow(){
-        if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
+        if(this.menuNavigator.getMenuType() != MenuType.NOMENU) {
             this.menuNavigator.changeSelectedMenuObject(-1);
-        } else{
-            this.game.checkAndMove(0, -1);
+        } else if(this.game.getMode() == GameMode.EXPLORATION) {
+            if(this.game.checkAndMove(0, -1) == SpaceType.ENEMY) {
+                this.menuNavigator.setMenuType(MenuType.COMBATMENU);
+                this.menuNavigator.setSelectedObject(MenuType.COMBATMENU);
+                this.player.hidePlayer();
+            }
         }
     }
     
     public void rightArrow(){
         if(isTargeting){
             
-        } else{
-            this.game.checkAndMove(1, 0);
+        } else if(this.game.getMode() == GameMode.EXPLORATION) {
+            if(this.game.checkAndMove(1, 0) == SpaceType.ENEMY) {
+                this.menuNavigator.setMenuType(MenuType.COMBATMENU);
+                this.menuNavigator.setSelectedObject(MenuType.COMBATMENU);
+                this.player.hidePlayer();
+            }
         }
     }
     
     public void downArrow(){
        if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             this.menuNavigator.changeSelectedMenuObject(1);
-       } else{
-            this.game.checkAndMove(0, 1);
+       } else if(this.game.getMode() == GameMode.EXPLORATION) {
+            if(this.game.checkAndMove(0, 1) == SpaceType.ENEMY) {
+                this.menuNavigator.setMenuType(MenuType.COMBATMENU);
+                this.menuNavigator.setSelectedObject(MenuType.COMBATMENU);
+                this.player.hidePlayer();
+            }
        }
     }
 }

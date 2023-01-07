@@ -17,4 +17,6 @@ comment7.params=menuType
 comment7.target=void\ setMenuType(MenuType)
 comment8.params=
 comment8.target=MenuType\ getMenuType()
-numComments=9
+comment9.params=menuType
+comment9.target=void\ setSelectedObject(MenuType)
+numComments=10

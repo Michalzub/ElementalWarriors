@@ -58,10 +58,29 @@ public class MenuNavigator {
         System.out.println("APPARENTLY IT WAS HIDDEN");
         this.menu.menuHide();
         this.menu.setMenuType(menuType);
+        this.initialSelectedObject();
+        this.highlightSelectedObject();
         
     }
     
     public MenuType getMenuType(){
         return this.menu.getMenuType();
+    }
+    
+    public void setSelectedObject(MenuType menuType) {
+        switch(menuType) {
+            case MAINMENU:
+                this.selectedMenuObject = MenuObject.LOADGAME;
+                break;
+            case PAUSEMENU:
+                this.selectedMenuObject = MenuObject.CONTINUE;
+                break;
+            case ITEMMENU:
+                this.selectedMenuObject = MenuObject.SMALLHP;
+                break;
+            case COMBATMENU:
+                this.selectedMenuObject = MenuObject.ATTACK;
+                break;
+        }
     }
 }

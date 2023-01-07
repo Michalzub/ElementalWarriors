@@ -54,29 +54,37 @@ public class Game {
         return this.player;
     }
     
-    public void checkAndMove(int distanceX, int distanceY) {
-        if (this.mode == GameMode.EXPLORATION) {
-            int nextX = this.player.getPlayerX() + distanceX;
-            int nextY = this.player.getPlayerY() + distanceY;
-            SpaceType nextTyp = this.map.getSpaceType(nextX, nextY);
-            switch (this.map.getSpaceType(nextX, nextY)) {
-                case ROCK:
-                    break;
-                case CHEST:
-                    this.player.playerMove(nextX, nextY);
-                    this.player.addItem();
-                    this.map.changeToGrass(this.player.getPlayerX(), this.player.getPlayerY());
-                    this.player.getplayerPicture().zobraz();
-                    break;
-                case ENEMY:
-                    this.changeMode();
-                    this.player.playerMove(nextX, nextY);
-                    this.map.changeToGrass(this.player.getPlayerX(), this.player.getPlayerY());
-                    break;
-                default:
-                    this.player.playerMove(nextX, nextY);
-                    break;
-            }
+    public SpaceType checkAndMove(int distanceX, int distanceY) {
+        int nextX = this.player.getPlayerX() + distanceX;
+        int nextY = this.player.getPlayerY() + distanceY;
+        SpaceType nextType = this.map.getSpaceType(nextX, nextY);
+        switch (this.map.getSpaceType(nextX, nextY)) {
+            case ROCK:
+                break;
+            case CHEST:
+                this.player.playerMove(nextX, nextY);
+                this.player.addItem();
+                this.map.changeToGrass(this.player.getPlayerX(), this.player.getPlayerY());
+                this.player.getplayerPicture().zobraz();
+                break;
+            case ENEMY:
+                 this.changeMode();
+                 this.player.playerMove(nextX, nextY);
+                 this.map.changeToGrass(this.player.getPlayerX(), this.player.getPlayerY());
+                 break;
+            default:
+                 this.player.playerMove(nextX, nextY);
+                 break;
         }
+        return nextType;
+    }
+    
+    public GameMode getMode() {
+        return this.mode;
+    }
+    
+    public void hideRemnants() {
+        this.player.hidePlayer();
+        this.map.hideMap();
     }
 }
