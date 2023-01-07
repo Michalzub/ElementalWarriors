@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=MenuObjectType
 comment0.text=\r\n\ Enumeration\ class\ MainMenum\ -\ write\ a\ description\ of\ the\ enum\ class\ here\r\n\ \r\n\ @author\ (your\ name\ here)\r\n\ @version\ (version\ number\ or\ date\ here)\r\n
-comment1.params=picture
-comment1.target=MenuObjectType(java.lang.String)
+comment1.params=unselected\ selected
+comment1.target=MenuObjectType(java.lang.String,\ java.lang.String)
 comment2.params=
-comment2.target=java.lang.String\ getPicture()
+comment2.target=Obrazok\ getUnselectedPicture()
 numComments=3
