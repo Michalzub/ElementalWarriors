@@ -17,6 +17,7 @@ public class MenuNavigator {
         this.initialSelectedObject();
         System.out.println(this.selectedMenuObject);
     }
+    
     public void initialSelectedObject() {
         this.objectSelector = 0;
         this.selectedMenuObject = this.menuObjectList.get(this.objectSelector);
@@ -57,7 +58,7 @@ public class MenuNavigator {
         System.out.println("APPARENTLY IT WAS HIDDEN");
         this.menu.menuHide();
         this.menu.setMenuType(menuType);
-        this.initialSelectedObject();
+        
     }
     
     public MenuType getMenuType(){

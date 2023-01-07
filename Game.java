@@ -69,7 +69,7 @@ public class Game {
                     this.player.getplayerPicture().zobraz();
                     break;
                 case ENEMY:
-                    //this.nastavMode(GameMode.COMBAT);
+                    this.changeMode();
                     this.player.playerMove(nextX, nextY);
                     this.map.changeToGrass(this.player.getPlayerX(), this.player.getPlayerY());
                     break;
