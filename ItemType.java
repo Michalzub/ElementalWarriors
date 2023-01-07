@@ -9,33 +9,33 @@ public enum ItemType {
     /**
      * Malý potion doplňujúci život (Sila 50).
      */
-    HEALTHSMALL("Small Health Potion", 50),
+    SMALLHEALTHPOTION("Small Health Potion", 50),
     /**
      * Velký potion doplňujúci život Sila (Sila 100).
      */
-    HEALTHLARGE("Large Health Potion", 100),
+    LARGEHEALTHPOTION("Large Health Potion", 100),
     /**
      * Malý potion doplňujúci manu Sila (Sila 50).
      */
-    MANASMALL("Small Mana Potion", 50),
+    SMALLMANAPOTION("Small Mana Potion", 50),
     /**
-     * Malý potion doplňujúci manu (Sila 100).
+     * Velký potion doplňujúci manu (Sila 100).
      */
-    MANALARGE("Large Mana Potion", 100);
+    LARGEMANAPOTION("Large Mana Potion", 100);
 
     private String name;
-    private double sila;
+    private double strength;
 
-    ItemType (String name, double sila) {
+    ItemType (String name, double strength) {
         this.name = name;
-        this.sila = sila;
+        this.strength = strength;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public double getSila() {
-        return this.sila;
+    public double getStrength() {
+        return this.strength;
     }
 }

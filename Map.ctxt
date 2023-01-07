@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Map
+comment0.text=\r\n\ Zostav\u00ED\ mapu\ z\ pol\u00ED\u010Diek\ podla\ textov\u00E9ho\ dokumentu.\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.1\r\n
+comment1.params=suborMapa
+comment1.target=Map(java.lang.String)
+comment2.params=
+comment2.target=void\ hideMap()
+comment3.params=
+comment3.target=void\ showMap()
+comment4.params=posX\ posY
+comment4.target=void\ changeToGrass(int,\ int)
+comment5.params=posX\ posY
+comment5.target=SpaceType\ getSpaceType(int,\ int)
+comment6.params=
+comment6.target=Space[][]\ getSpaceGrid()
+numComments=7

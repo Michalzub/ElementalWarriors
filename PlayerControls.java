@@ -12,7 +12,7 @@ public class PlayerControls {
     private MenuNavigator menuNavigator;
     private boolean isTargeting;
     private MenuType menuType;
-    private Hra hra;
+    private Game game;
     private Player player;
     
     public PlayerControls(MenuNavigator menuNavigator) {
@@ -24,6 +24,8 @@ public class PlayerControls {
     }
     
     public void xKey(){
+        this.menuNavigator.getSelectedMenuObject().getUnselectedPicture().skry();
+        this.menuNavigator.hideSelectedObject();
         switch(this.menuNavigator.getMenuType()){
             case NOMENU:
                 this.menuNavigator.setMenuType(MenuType.PAUSEMENU);
@@ -40,31 +42,29 @@ public class PlayerControls {
         if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             switch(this.menuNavigator.getSelectedMenuObject()) {
                 case LOADGAME:
-                
-                    System.out.println("LOADGAME PRESSED");
+                    this.menuNavigator.hideSelectedObject();
                     this.menuNavigator.setMenuType(MenuType.NOMENU);
                     File mapa = new File("files/saves/mapa.txt");
                     File playerData = new File("files/saves/playerData.txt");
                     Scanner citacMapa = new Scanner(mapa);
                     Scanner citacPlayer = new Scanner(playerData);
                     if (citacMapa.hasNext() && citacPlayer.hasNext()) {
-                        this.hra = new Hra("files/saves/");
+                        this.game = new Game("files/saves/");
                         return;
                     }
-                    this.player= this.hra.getPlayer();
+                    this.player = this.game.getPlayer();
                     citacMapa.close();
                     citacPlayer.close();
                     break;
                     
                 case NEWGAME:
-                    System.out.println("NEWGAME PRESSED");
+                    this.menuNavigator.hideSelectedObject();
                     this.menuNavigator.setMenuType(MenuType.NOMENU);
-                    this.hra = new Hra("files/newGame/");
-                    this.player= this.hra.getPlayer();
+                    this.game = new Game("files/newGame/");
+                    this.player= this.game.getPlayer();
                     break;
                 case EXITGAME:
-                    System.out.println("EXITGAME PRESSED");
-                        this.hra.saveGame();
+                        this.game.saveGame();
                     System.exit(0);
                     break;
                 case ATTACK:
@@ -104,15 +104,13 @@ public class PlayerControls {
                     
                     break;
                 case CONTINUE:
-                    System.out.println("CONTINUE PRESSED");
+                    this.player = this.game.getPlayer();
+                    this.menuNavigator.hideSelectedObject();
                     this.menuNavigator.setMenuType(MenuType.NOMENU);
                     break;
                 case SAVEGAME:
-                    System.out.println("SAVEGAME PRESSED");
-                    
                     break;
                 case BACKTOMAINMENU:
-                    System.out.println("BACKTOMAINMENU PRESSED");
                     this.menuNavigator.setMenuType(MenuType.MAINMENU);
                     break;
             }
@@ -123,7 +121,7 @@ public class PlayerControls {
         if(isTargeting){
             
         } else{
-            this.player.checkAndMove(-1, 0);
+            this.game.checkAndMove(-1, 0);
         }
     }
     
@@ -131,7 +129,7 @@ public class PlayerControls {
         if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             this.menuNavigator.changeSelectedMenuObject(-1);
         } else{
-            this.player.checkAndMove(0, -1);
+            this.game.checkAndMove(0, -1);
         }
     }
     
@@ -139,15 +137,15 @@ public class PlayerControls {
         if(isTargeting){
             
         } else{
-            this.player.checkAndMove(1, 0);
+            this.game.checkAndMove(1, 0);
         }
     }
     
     public void downArrow(){
        if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             this.menuNavigator.changeSelectedMenuObject(1);
-        } else{
-            this.player.checkAndMove(0, 1);
-        }
+       } else{
+            this.game.checkAndMove(0, 1);
+       }
     }
 }

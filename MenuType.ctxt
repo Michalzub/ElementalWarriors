@@ -1,4 +1,8 @@
 #BlueJ class context
 comment0.target=MenuType
 comment0.text=\r\n\ Enumeration\ class\ Menus\ -\ write\ a\ description\ of\ the\ enum\ class\ here\r\n\ \r\n\ @author\ (your\ name\ here)\r\n\ @version\ (version\ number\ or\ date\ here)\r\n
-numComments=1
+comment1.params=menuBackgroundFile\ posX\ posY
+comment1.target=MenuType(java.lang.String,\ int,\ int)
+comment2.params=
+comment2.target=Obrazok\ getMenuBackground()
+numComments=3

@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class Item {
 
-    private ItemType typ;
+    private ItemType itemType;
 
     /**
      *   
@@ -16,8 +16,8 @@ public class Item {
      */
     public Item() {
         Random r = new Random();
-        int cisloItemu = r.nextInt(this.typ.values().length);
-        this.typ = this.typ.values()[cisloItemu];
+        int cisloItemu = r.nextInt(this.itemType.values().length);
+        this.itemType = this.itemType.values()[cisloItemu];
     }
 
     /**
@@ -25,32 +25,32 @@ public class Item {
      */
     public void setTyp(String pozadovanyTyp) {
         switch (pozadovanyTyp) {
-            case "HEALTHSMALL":
-                this.typ = ItemType.HEALTHSMALL;
+            case "SMALLHP":
+                this.itemType = ItemType.SMALLHEALTHPOTION;
                 break;
-            case "HEALTHLARGE":
-                this.typ = ItemType.HEALTHLARGE;
+            case "LARGEHP":
+                this.itemType = ItemType.LARGEHEALTHPOTION;
                 break;
-            case "MANASMALL":
-                this.typ = ItemType.MANASMALL;
+            case "SMALLMP":
+                this.itemType = ItemType.SMALLMANAPOTION;
                 break;
-            case "MANALARGE":
-                this.typ = ItemType.MANALARGE;
+            case "LARGEMP":
+                this.itemType = ItemType.LARGEMANAPOTION;
                 break;
             default:
-                System.out.println("NO A MAME TU CISLO");
+                return;
         }
     }
 
     public String getName() {
-        return this.typ.getName();
+        return this.itemType.getName();
     }
 
-    public double getSila() {
-        return this.typ.getSila();
+    public double getStrength() {
+        return this.itemType.getStrength();
     }
 
     public ItemType getType() {
-        return this.typ;
+        return this.itemType;
     }
 }

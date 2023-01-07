@@ -6,19 +6,36 @@ import java.util.ArrayList;
  * @version (a version number or a date)
  */
 public class MenuNavigator {
-    private ArrayList<MenuObjectType> menuObjectList;
-    private MenuObjectType selectedMenuObject;
+    private ArrayList<MenuObject> menuObjectList;
+    private MenuObject selectedMenuObject;
     private Menu menu;
     private int objectSelector;
     public MenuNavigator(Menu menu) {
-        this.objectSelector = 0;
+        
         this.menu = menu;
         this.menuObjectList = this.menu.getMenuObjectList();
-        this.selectedMenuObject = this.menuObjectList.get(this.objectSelector);
+        this.initialSelectedObject();
         System.out.println(this.selectedMenuObject);
+    }
+    public void initialSelectedObject() {
+        this.objectSelector = 0;
+        this.selectedMenuObject = this.menuObjectList.get(this.objectSelector);
+        this.selectedMenuObject.getUnselectedPicture().skry();
+        this.selectedMenuObject.getSelectedPicture().zobraz();
+    }
+    
+    public void highlightSelectedObject() {
+        this.selectedMenuObject.getUnselectedPicture().skry();
+        this.selectedMenuObject.getSelectedPicture().zobraz();
+    }
+    
+    public void hideSelectedObject() {
+        this.selectedMenuObject.getSelectedPicture().skry();
     }
     
     public void changeSelectedMenuObject(int direction) {
+        this.selectedMenuObject.getUnselectedPicture().zobraz();
+        this.selectedMenuObject.getSelectedPicture().skry();
         this.objectSelector += direction;
         if(this.objectSelector < 0) {
             this.objectSelector = this.menuObjectList.size() - 1;
@@ -26,15 +43,21 @@ public class MenuNavigator {
             this.objectSelector = 0;
         }
         this.selectedMenuObject = this.menuObjectList.get(this.objectSelector);
-        System.out.println(this.selectedMenuObject);
+        this.highlightSelectedObject();
     }
     
-    public MenuObjectType getSelectedMenuObject() {
+    public MenuObject getSelectedMenuObject() {
         return this.selectedMenuObject;
     }
     
     public void setMenuType(MenuType menuType){
+        
+        System.out.println(this.selectedMenuObject);
+        this.selectedMenuObject.getSelectedPicture().skry();
+        System.out.println("APPARENTLY IT WAS HIDDEN");
+        this.menu.menuHide();
         this.menu.setMenuType(menuType);
+        this.initialSelectedObject();
     }
     
     public MenuType getMenuType(){

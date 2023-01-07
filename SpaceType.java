@@ -5,25 +5,25 @@
  * @author Michal Zúbek
  * @version 0.1
  */
-public enum TypPolicka {
+public enum SpaceType {
     ROCK(0, "files/obrazky/rock.png"),
     GRASS(1, "files/obrazky/grass.png"),
     CHEST(2, "files/obrazky/chest.png"),
     ENEMY(3, "files/obrazky/enemy.png");
     
     private int type;
-    private String obrazok;
+    private String pictureFilePath;
     
-    TypPolicka (int type, String obrazok) {
+    SpaceType (int type, String pictureFilePath) {
         this.type = type;
-        this.obrazok = obrazok;
+        this.pictureFilePath = pictureFilePath;
     }
     
     public int getType() {
         return this.type;
     }
     
-    public String getObrazok() {
-        return this.obrazok;
+    public String getPictureFilePath() {
+        return this.pictureFilePath;
     }
 }
