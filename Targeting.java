@@ -6,22 +6,17 @@
  * @version (a version number or a date)
  */
 public class Targeting {
+    private Player player;
     private EnemyParty enemyParty;
-    private PlayerParty playerParty;
     private PlayerCharacter[] combattants;
-    private String targetingMode;
     private PlayerCharacter allyTarget;
     private EnemyCharacter enemyTarget;
     
-    public Targeting(EnemyParty enemyParty, PlayerParty playerParty) {
+    public Targeting(EnemyParty enemyParty, Player player) {
+        this.player = player;
         this.enemyParty = enemyParty;
-        this.playerParty = playerParty;
-        this.combattants = this.playerParty.getCombattants();
-        this.targetingMode = "enemy";
-    }
-    
-    public void changeTargettingMode(String mode){
-        this.targetingMode = mode;
+        this.combattants = this.player.getCombattants();
+        
     }
     
     public void changeTarget(String direction){

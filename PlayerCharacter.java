@@ -26,4 +26,17 @@ public class PlayerCharacter {
     public void elementalEffect(){
         
     }
+    
+    public void setPlayerHealth(int health) {
+        this.health = health;
+    }
+    public void setPlayerMana(int mana) {
+        this.mana = mana;
+    }
+    public double getPlayerHealth() {
+        return this.health;
+    }
+    public double getPlayerMana() {
+        return this.mana;
+    }
 }

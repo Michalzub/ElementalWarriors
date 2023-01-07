@@ -53,16 +53,21 @@ public class Player {
         }
         this.combattants[0] = this.playerParty[0];
         this.combattants[1] = this.playerParty[1];
-        if(file.equals("files/saves/")) {
-            
+        if(file.equals("files/saves/playerData.txt")) {
+            for(int i = 0; i < this.playerParty.length; i++) {
+                this.playerParty[i].setPlayerHealth(reader.nextInt());
+                this.playerParty[i].setPlayerMana(reader.nextInt());
+            }
+            this.combattants[0] = this.playerParty[reader.nextInt()];
+            this.combattants[1] = this.playerParty[reader.nextInt()];
         }
-
+        
+        reader.close();
         this.getItemList();
 
         this.playerPicture = new Obrazok("files/obrazky/player.png");
         this.playerPicture.zmenPolohu(50 * this.posX + 25, 50 * this.posY + 25);
         this.playerPicture.zobraz();
-        reader.close();
     }
     
     public void hidePlayer() {
@@ -102,5 +107,9 @@ public class Player {
 
     public int getPlayerY() {
         return this.posY;
+    }
+    
+    public PlayerCharacter[] getCombattants() {
+        return this.combattants;
     }
 }
