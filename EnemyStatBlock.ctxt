@@ -1,14 +1,16 @@
 #BlueJ class context
 comment0.target=EnemyStatBlock
 comment0.text=\r\n\ Enumeration\ class\ Enemy\ -\ write\ a\ description\ of\ the\ enum\ class\ here\r\n\ \r\n\ @author\ (your\ name\ here)\r\n\ @version\ (version\ number\ or\ date\ here)\r\n
-comment1.params=health\ mana\ speed\ pictureFilePath
-comment1.target=EnemyStatBlock(double,\ double,\ double,\ java.lang.String)
+comment1.params=health\ mana\ damage\ speed\ pictureFilePath
+comment1.target=EnemyStatBlock(double,\ double,\ double,\ double,\ java.lang.String)
 comment2.params=
 comment2.target=double\ getHeath()
 comment3.params=
 comment3.target=double\ getMana()
 comment4.params=
-comment4.target=double\ getSpeed()
+comment4.target=double\ getDamage()
 comment5.params=
-comment5.target=java.lang.String\ getPictureFilePath()
-numComments=6
+comment5.target=double\ getSpeed()
+comment6.params=
+comment6.target=java.lang.String\ getPictureFilePath()
+numComments=7

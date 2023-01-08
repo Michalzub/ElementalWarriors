@@ -52,4 +52,12 @@ public class CharacterTurn {
     public EnemyCharacter getEnemyCharacter() {
         return this.enemyCharacter;
     }
+    
+    public void hideCharacter() {
+        if(isPlayerCharacter()) {
+            this.getPlayerCharacter().getPicture().skry();
+        } else {
+            this.getEnemyCharacter().getPicture().skry();
+        }
+    }
 }

@@ -17,6 +17,7 @@ public class PlayerControls {
     private CombatSupervisor combatSupervisor;
     private Targeting targeting;
     private TargetingMode targetingMode;
+    private String selectedMove;
     
     public PlayerControls(MenuNavigator menuNavigator) {
         this.menuNavigator = menuNavigator;
@@ -49,8 +50,10 @@ public class PlayerControls {
     
     public void space() throws FileNotFoundException, IOException {
         if (this.targetingMode != TargetingMode.NOTTARGETING) {
-            this.combatSupervisor.action(this.targeting.getAllyTarget(),this.targeting.getEnemyTarget(), this.menuNavigator.getSelectedMenuObject(), this.targetingMode);
+            System.out.println("before Action");
+            this.combatSupervisor.action(this.targeting.getAllyTarget(), this.targeting.getEnemyTarget(), this.selectedMove, this.targetingMode);
             
+            this.targetingMode = TargetingMode.NOTTARGETING;
         }else if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             switch(this.menuNavigator.getSelectedMenuObject()) {
                 case LOADGAME:
@@ -88,15 +91,11 @@ public class PlayerControls {
                     break;
                 case ATTACK:
                     System.out.println("ATTACK PRESSED");
-                    
-                    System.out.println("before creating there is " + this.targeting);
+                    this.selectedMove = "attack";
                     this.combatSupervisor.roundStart();
-                    System.out.println(this.targetingMode);
                     this.targetingMode = TargetingMode.ENEMYTARGETING;
-                    System.out.println(this.targetingMode);
                     this.combatSupervisor.startTargetting(this.targetingMode);
                     this.targeting = this.combatSupervisor.getTargeting();
-                    System.out.println(this.targeting);
                     
                     break;
                 case GUARD:
@@ -156,14 +155,10 @@ public class PlayerControls {
     
     public void leftArrow() {
         if(this.targetingMode != TargetingMode.NOTTARGETING){
-            System.out.println("before changing target");
             this.targeting.changeTarget(-1);
-            System.out.println("after changing target");
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
             if(this.game.checkAndMove(-1, 0) == SpaceType.ENEMY) {
-                System.out.println("before the supervisor");
                 this.combatSupervisor = this.game.getCombatSupervisor();
-                System.out.println("after the supervisor");
             }
         }
     }
@@ -175,18 +170,14 @@ public class PlayerControls {
             this.menuNavigator.changeSelectedMenuObject(-1);
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
             if(this.game.checkAndMove(0, -1) == SpaceType.ENEMY) {
-                System.out.println("before the supervisor");
                 this.combatSupervisor = this.game.getCombatSupervisor();
-                System.out.println("we got the supervisor");
             }
         }
     }
     
     public void rightArrow() {
         if(this.targetingMode != TargetingMode.NOTTARGETING){
-            System.out.println("before changing target");
             this.targeting.changeTarget(1);
-            System.out.println("after changing target");
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
             if(this.game.checkAndMove(1, 0) == SpaceType.ENEMY) {
                 this.combatSupervisor = this.game.getCombatSupervisor();
@@ -200,10 +191,8 @@ public class PlayerControls {
         } else if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             this.menuNavigator.changeSelectedMenuObject(1);
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            if(this.game.checkAndMove(0, 1) == SpaceType.ENEMY) {
-                System.out.println("before the supervisor");
+            if(this.game.checkAndMove(0, 1) == SpaceType.ENEMY) {;
                 this.combatSupervisor = this.game.getCombatSupervisor();
-                System.out.println("we got the supervisor");
             }
        }
     }

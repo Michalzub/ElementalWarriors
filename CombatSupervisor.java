@@ -18,6 +18,7 @@ public class CombatSupervisor {
     private int playerCount;
     private int enemyCount;
     private boolean turnInProgress;
+    private CharacterTurn selectedCharacter;
     
     private Targeting targeting;
     
@@ -82,11 +83,10 @@ public class CombatSupervisor {
     public void turnTime() {
         CharacterTurn tempCharacterTurn = this.turnReadyCharacters.remove(0);
         if(tempCharacterTurn.isPlayerCharacter()){
-            this.playerTurn(tempCharacterTurn.getPlayerCharacter());
+            this.playerTurn(tempCharacterTurn);
         } else {
-            this.enemyTurn(tempCharacterTurn.getEnemyCharacter());
+            this.enemyTurn(tempCharacterTurn);
         }
-        System.out.println("combattants left in turnReadyChars " + this.turnReadyCharacters.size());
     }
     
     public ArrayList<CharacterTurn> getSortedList(ArrayList<CharacterTurn> unsortedList) {
@@ -112,27 +112,79 @@ public class CombatSupervisor {
         return sortedCharacterList;
     }
     
-    public void playerTurn(PlayerCharacter character) {
+    public void playerTurn(CharacterTurn character) {
         System.out.println("Players turn in progress");
         this.menuNavigator.setMenuType(MenuType.COMBATMENU);
+        this.selectedCharacter = character;
     }
     
-    public void enemyTurn(EnemyCharacter character){
+    public CharacterTurn getSelectedCharacter() {
+        return this.selectedCharacter;
+    }
+    
+    public void enemyTurn(CharacterTurn character){
         System.out.println("Enemy turn in progress");
         this.roundStart();
     }
     
     public void startTargetting(TargetingMode targetingMode) {
         System.out.println("Did we atleast get inside");
-        this.targeting = new Targeting(this.enemyCombattants, this.playerCombattants, targetingMode);
+        this.targeting = new Targeting(this.allCombattants, targetingMode);
     }
     
-    public void action(PlayerCharacter allyTarget, EnemyCharacter enemyTarget, MenuObject menuObject, TargetingMode targetingMode) {
-        PlayerCharacter tempAllyTarget = allyTarget;
-        EnemyCharacter tempEnemyTarget = enemyTarget;
-        MenuObject objectType = menuObject;
+    public void action(CharacterTurn allyTarget, CharacterTurn enemyTarget, String selectedMove , TargetingMode targetingMode) {
+        String tempSelectedMove = selectedMove;
+        PlayerCharacter tempSelectedCharacter = this.selectedCharacter.getPlayerCharacter();
+        PlayerCharacter tempAllyTarget = allyTarget.getPlayerCharacter();
+        EnemyCharacter tempEnemyTarget = enemyTarget.getEnemyCharacter();
         TargetingMode targetMode = targetingMode;
-        //this IS WHERE YOU ENDED
+        switch(tempSelectedMove) {
+            case "attack":
+                System.out.println("we got into attack switch");
+                if(tempSelectedCharacter.attack(tempEnemyTarget)) {
+                    this.removeTarget(enemyTarget);
+                }
+                this.roundStart();
+                break;
+            case "elementalhit":
+                if(tempSelectedCharacter.elementalHit(tempEnemyTarget)) {
+                    this.removeTarget(enemyTarget);
+                }
+                this.roundStart();
+                break;
+            case "smallhp":
+                System.out.println("SMALLHP PRESSED");
+                
+                break;
+            case "largehp":
+                System.out.println("LARGEHP PRESSED");
+                
+
+                break;
+            case "smallmp":
+                System.out.println("SMALLMP PRESSED");
+                
+
+                break;
+            case "lagemp":
+                System.out.println("LARGEMP PRESSED");
+                
+
+                break;
+            default:
+                break;
+        }
+    }
+    
+    public void removeTarget(CharacterTurn character) {
+        character.hideCharacter();
+        this.allCombattants.remove(character);
+        if(character.isPlayerCharacter()) {
+            this.playerCount -= 1;
+        } else {
+            this.enemyCount -= 1;
+        }
+        
     }
     
     public Targeting getTargeting() {
