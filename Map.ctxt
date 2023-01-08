@@ -1,14 +1,17 @@
 #BlueJ class context
 comment0.target=Map
-comment0.text=\r\n\ Zostav\u00ED\ mapu\ z\ pol\u00ED\u010Diek\ podla\ textov\u00E9ho\ dokumentu.\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.1\r\n
+comment0.text=\r\n\ Zostav\u00ED\ mapu\ ako\ pole\ pol\u00ED\ z\ pol\u00ED\u010Diek\ podla\ textov\u00E9ho\ dokumentu.\r\n\ Uschov\u00E1va\ taktie\u017E\ po\u010Det\ nepriatelov\ na\ mape.\r\n\ \r\n\ @param\ suborMapa\ string\ \u00FAlo\u017En\u00E9ho\ miesta\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.1\r\n
 comment1.params=suborMapa
 comment1.target=Map(java.lang.String)
 comment2.params=
 comment2.target=void\ hideMap()
+comment2.text=\r\n\ skryje\ pozost\u00E1vaj\u00FAce\ prvky\ mapy\r\n
 comment3.params=
 comment3.target=void\ showMap()
+comment3.text=\r\n\ uk\u00E1\u017Ee\ prvkz\ mapy\r\n
 comment4.params=posX\ posY
 comment4.target=void\ changeToGrass(int,\ int)
+comment4.text=\r\n\ Zavol\u00E1\ metodu\ dan\u00E9ho\ pol\u00ED\u010Dka\ changeToGrass\r\n
 comment5.params=posX\ posY
 comment5.target=SpaceType\ getSpaceType(int,\ int)
 comment6.params=

@@ -1,10 +1,11 @@
 #BlueJ class context
 comment0.target=PlayerControls
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ PlayerControls\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Mana\u017Euje\ ovl\u00E1danie\ hr\u00E1\u010Da\ vytv\u00E1ra\ hru,\r\n\ @param\ menuNavigator\ menuNavigator\ aby\ hrac\ mohol\ pouzivat\ menu\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\ \r\n\ @version\ 0.9\r\n
 comment1.params=menuNavigator
 comment1.target=PlayerControls(MenuNavigator)
 comment2.params=
 comment2.target=void\ xKey()
+comment2.text=\r\n\ Akcie\ ktor\u00E9\ sa\ vykonaj\u00FA\ pri\ stla\u010Den\u00FD\ tla\u010D\u00EDtka\ X.\r\n\ Ak\ je\ v\ targeting\ mode\ vrati\ sa\ z\ neho\ von.\r\n\ Dok\u00E1\u017Ee\ otvorit\ pause\ menu\ a\ vratit\ sa\ z\ items\ naspat\ do\ combat\ menu\r\n
 comment3.params=
 comment3.target=void\ space()
 comment4.params=

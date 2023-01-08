@@ -1,9 +1,10 @@
 
 /**
- * Enumeration class MainMenum - write a description of the enum class here
+ * Enum uschováva každý typ tlačítka ktorý sa nachádza v hre pre použitie v menu
+ * obsahuje dva obrazky jeden ked tlacitko nieje vybrate a druhy ked je vybrate
  * 
- * @author (your name here)
- * @version (version number or date here)
+ * @author MichalZúbek
+ * @version 0.9
  */
 public enum MenuObject {
     LOADGAME("loadGameUnselected.png","loadGameSelected.png",250,220),

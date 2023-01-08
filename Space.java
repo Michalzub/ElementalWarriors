@@ -17,6 +17,8 @@ public class Space {
     
     /**
     *  Zmení polohu obrázku a zobrazí ho.
+    *  @param posX pozícia X na ktorej sa má zobraziť
+    *  @param posZ pozícia Z na ktorej sa má zobraziť
     */
     public void drawPicture(int posX, int posY) {
         this.picture.zmenPolohu(posX + 25, posY + 25);
@@ -27,10 +29,10 @@ public class Space {
         return this.picture;
     }
     
+    /**
+    *  Zmení políčko na grass typ.
+    */
     public void changeToGrass() {
-        /**
-         *  Zmení políčko na grass typ.
-         */
         this.spaceType = this.spaceType.GRASS;
         this.picture.zmenObrazok(this.spaceType.getPictureFilePath());
     }

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MenuObject
-comment0.text=\r\n\ Enumeration\ class\ MainMenum\ -\ write\ a\ description\ of\ the\ enum\ class\ here\r\n\ \r\n\ @author\ (your\ name\ here)\r\n\ @version\ (version\ number\ or\ date\ here)\r\n
+comment0.text=\r\n\ Enum\ uschov\u00E1va\ ka\u017Ed\u00FD\ typ\ tla\u010D\u00EDtka\ ktor\u00FD\ sa\ nach\u00E1dza\ v\ hre\ pre\ pou\u017Eitie\ v\ menu\r\n\ obsahuje\ dva\ obrazky\ jeden\ ked\ tlacitko\ nieje\ vybrate\ a\ druhy\ ked\ je\ vybrate\r\n\ \r\n\ @author\ MichalZ\u00FAbek\r\n\ @version\ 0.9\r\n
 comment1.params=unselected\ selected\ posX\ posY
 comment1.target=MenuObject(java.lang.String,\ java.lang.String,\ int,\ int)
 comment2.params=

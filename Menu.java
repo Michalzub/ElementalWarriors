@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 /**
- * Write a description of class MenuLmao here.
+ * Trieda menu sa stará o jeho stavbu a zmeny.
+ * Na začiatku hry je vždy jeho typ MainMenu
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author MichalZúbek
+ * @version 0.9
  */
 public class Menu {
     private ArrayList<MenuObject> menuObjectList;
@@ -14,6 +15,10 @@ public class Menu {
         this.menuBuild();
     }
     
+    /**
+    * Metoda menuBuild postavá menu podla jeho typu tak že do neho pridá tlačítkové objekty
+    * ak už menu predtým existovalo vymení jeho tlačítkove objekty
+    */
     public void menuBuild() {
         if(this.menuType != MenuType.NOMENU) {
             switch(this.menuType) {
@@ -53,6 +58,9 @@ public class Menu {
         
     }
     
+    /**
+    * Skryje menu
+    */
     public void menuHide() {
         if(this.menuType != MenuType.NOMENU) {
             this.menuType.getMenuBackground().skry();
@@ -63,6 +71,9 @@ public class Menu {
         }
     }
     
+    /**
+    * zmení typ menu a postavá ho
+    */
     public void setMenuType(MenuType menuType) {
         this.menuHide();
         this.menuType = menuType;
@@ -75,9 +86,5 @@ public class Menu {
     
     public MenuType getMenuType() {
         return this.menuType;
-    }
-    
-    public void hideRemnants() {
-        
     }
 }

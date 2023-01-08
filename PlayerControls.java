@@ -4,10 +4,11 @@ import java.io.IOException;  // Import this class to handle errors
 import java.util.Scanner;
 import java.lang.InterruptedException;
 /**
- * Write a description of class PlayerControls here.
+ * Manažuje ovládanie hráča vytvára hru,
+ * @param menuNavigator menuNavigator aby hrac mohol pouzivat menu
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Michal Zúbek 
+ * @version 0.9
  */
 public class PlayerControls {
     private MenuNavigator menuNavigator;
@@ -24,14 +25,19 @@ public class PlayerControls {
         this.targetingMode = TargetingMode.NOTTARGETING;
     }
     
+    /**
+    * Akcie ktoré sa vykonajú pri stlačený tlačítka X.
+    * Ak je v targeting mode vrati sa z neho von.
+    * Dokáže otvorit pause menu a vratit sa z items naspat do combat menu
+    */
     public void xKey(){
         this.menuNavigator.getSelectedMenuObject().getUnselectedPicture().skry();
-        if (this.targetingMode != TargetingMode.NOTTARGETING) {
+        if (this.targetingMode != TargetingMode.NOTTARGETING) { // ak je v targeting mode zruši targeting
             this.targeting.hideTargeting();
             this.targetingMode = TargetingMode.NOTTARGETING;
             this.targeting.setTargettingMode(this.targetingMode);
         } else {
-            switch(this.menuNavigator.getMenuType()){
+            switch(this.menuNavigator.getMenuType()){ 
                 case NOMENU:
                     this.menuNavigator.setMenuType(MenuType.PAUSEMENU);
                     break;

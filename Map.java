@@ -2,7 +2,10 @@ import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 /**
- * Zostaví mapu z políčiek podla textového dokumentu.
+ * Zostaví mapu ako pole polí z políčiek podla textového dokumentu.
+ * Uschováva taktiež počet nepriatelov na mape.
+ * 
+ * @param suborMapa string úložného miesta
  * 
  * @author Michal Zúbek
  * @version 0.1
@@ -13,9 +16,8 @@ public class Map {
     private int spaceSideLength;
     private Player player;
     private int enemyTotal;
-
+    
     public Map(String suborMapa) throws FileNotFoundException {
-        //initialise instance variables
         this.enemyTotal = 0;
         this.txtMapa = new File(suborMapa);
         Scanner reader = new Scanner(this.txtMapa);
@@ -51,6 +53,9 @@ public class Map {
         reader.close();
     }
     
+    /**
+     * skryje pozostávajúce prvky mapy
+     */
     public void hideMap() {
         for (int i = 0; i < (this.spaceSideLength); i++) {
             for (int j = 0; j < (this.spaceSideLength); j++) {
@@ -58,6 +63,10 @@ public class Map {
             }
         }
     }
+    
+    /**
+     * ukáže prvkz mapy
+     */
     public void showMap() {
         for (int i = 0; i < (this.spaceSideLength); i++) {
             for (int j = 0; j < (this.spaceSideLength); j++) {
@@ -66,6 +75,9 @@ public class Map {
         }
     }
     
+    /**
+     * Zavolá metodu daného políčka changeToGrass
+     */
     public void changeToGrass(int posX, int posY) {
         this.spaceGrid[posY][posX].changeToGrass();
     }

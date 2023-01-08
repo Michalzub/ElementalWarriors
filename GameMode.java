@@ -1,11 +1,18 @@
 
 /**
- * Enumeration class GameMode - write a description of the enum class here
+ * Enum uschováva obidva herné typy, ktoré určujú herný mód
  * 
- * @author (your name here)
- * @version (version number or date here)
+ * @author MichalZúbek
+ * @version 0.9
  */
 public enum GameMode {
+    /**
+     * exploration tvorí pohyb po mape.
+     */
     EXPLORATION,
+    
+    /**
+     * combat tvorí súboj s nepriatelmi.
+     */
     COMBAT,
 }
