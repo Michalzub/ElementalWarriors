@@ -1,8 +1,16 @@
 #BlueJ class context
 comment0.target=Targeting
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Targeting\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=enemyParty\ player
-comment1.target=Targeting(EnemyParty,\ Player)
-comment2.params=direction
-comment2.target=void\ changeTarget(java.lang.String)
-numComments=3
+comment1.params=enemyParty\ combattants\ mode
+comment1.target=Targeting(java.util.ArrayList,\ PlayerCharacter[],\ TargetingMode)
+comment2.params=
+comment2.target=void\ initialTargetSelect()
+comment3.params=direction
+comment3.target=void\ changeTarget(int)
+comment4.params=mode
+comment4.target=void\ setTargettingMode(TargetingMode)
+comment5.params=
+comment5.target=PlayerCharacter\ getAllyTarget()
+comment6.params=
+comment6.target=EnemyCharacter\ getEnemyTarget()
+numComments=7

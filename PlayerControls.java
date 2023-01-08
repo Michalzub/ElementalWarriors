@@ -15,6 +15,7 @@ public class PlayerControls {
     private MenuType menuType;
     private Game game;
     private Player player;
+    private Targeting targeting;
     
     public PlayerControls(MenuNavigator menuNavigator) {
         this.menuNavigator = menuNavigator;
@@ -77,7 +78,7 @@ public class PlayerControls {
                     break;
                 case ATTACK:
                     System.out.println("ATTACK PRESSED");
-                    
+                    this.isTargeting = true;
                     this.game.getCombatSupervisor().notifyWaits();
                     break;
                 case GUARD:

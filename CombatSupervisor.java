@@ -19,6 +19,9 @@ public class CombatSupervisor {
     private int playerCount;
     private int enemyCount;
     private boolean turnInProgress;
+    
+    private Targeting targeting;
+    
     public CombatSupervisor(Game game, Player player, EnemyParty enemyParty, MenuNavigator menuNavigator) throws InterruptedException{
         this.menuNavigator = menuNavigator;
         this.game = game;
@@ -31,12 +34,21 @@ public class CombatSupervisor {
         this.enemyCombattants = this.enemyParty.getEnemyParty();
         this.allCombattants = new ArrayList<CharacterTurn>();
         this.turnReadyCharacters = new ArrayList<CharacterTurn>();
+        
+        this.targeting = new Targeting(this.enemyCombattants, this.playerCombattants);
+        
+        
         for(PlayerCharacter character : this.playerCombattants) {
+            character.getPicture().zmenPolohu(50 + 100 * this.playerCount, 300);
+            character.getPicture().zobraz();
             CharacterTurn tempCharTurn = new CharacterTurn(character, null, true);
             this.allCombattants.add(tempCharTurn);
             this.playerCount += 1;
         }
         for(EnemyCharacter character : this.enemyCombattants) {
+            character.getPicture().zmenPolohu(50 + 100 * this.enemyCount, 100);
+            character.getPicture().zobraz();
+            System.out.println("Enemy Shown");
             CharacterTurn tempCharTurn = new CharacterTurn(null, character, false);
             this.allCombattants.add(tempCharTurn);
             this.enemyCount += 1;
@@ -95,9 +107,10 @@ public class CombatSupervisor {
     }
     
     public void playerTurn(PlayerCharacter character) throws InterruptedException{
-        //this.menuNavigator.setMenuType(MenuType.COMBATMENU);
+        this.menuNavigator.setMenuType(MenuType.COMBATMENU);
         this.turnInProgress = true;
         this.enemyCount -= 1;
+        wait();
     }
     
     public void enemyTurn(EnemyCharacter character){
@@ -106,5 +119,9 @@ public class CombatSupervisor {
     
     public void notifyWaits() {
         
+    }
+    
+    public void startTargetting(TargetingMode mode) {
+        this.targeting = new Targeting(this.enemyCombattants, this.playerCombattants, mode);
     }
 }

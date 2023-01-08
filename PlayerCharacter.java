@@ -42,4 +42,7 @@ public class PlayerCharacter {
     public double getPlayerSpeed() {
         return this.speed;
     }
+    public Obrazok getPicture() {
+        return this.element.getPicture();
+    }
 }

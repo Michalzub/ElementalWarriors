@@ -11,12 +11,14 @@ public class EnemyCharacter {
     private double speed;
     private Element element;
     private EnemyStatBlock statBlock;
+    private Obrazok picture;
     public EnemyCharacter(EnemyStatBlock statBlock, Element element) {
         this.statBlock = statBlock;
         this.element = element;
         this.health = this.statBlock.getHeath() * this.element.getHealthMultiplier();
         this.mana = this.statBlock.getMana() * this.element.getManaMultiplier();
         this.speed = this.statBlock.getSpeed() * this.element.getSpeedMultiplier();
+        this.picture = new Obrazok(this.statBlock.getPictureFilePath());
     }
     
     public double getEnemyHealth() {
@@ -33,5 +35,9 @@ public class EnemyCharacter {
     }
     public EnemyStatBlock getStatBlock() {
         return this.statBlock;
+    }
+    
+    public Obrazok getPicture() {
+        return this.picture;
     }
 }
