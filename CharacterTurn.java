@@ -48,4 +48,10 @@ public class CharacterTurn {
     public double getDistance() {
         return this.distance;
     }
+    public PlayerCharacter getPlayerCharacter() {
+        return this.playerCharacter;
+    }
+    public EnemyCharacter getEnemyCharacter() {
+        return this.enemyCharacter;
+    }
 }

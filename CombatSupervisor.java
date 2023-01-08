@@ -40,11 +40,45 @@ public class CombatSupervisor {
                     this.turnReadyCharacters.add(character);
                 }
             }
-            
-            
+            this.turnReadyCharacters = this.getSortedList(this.turnReadyCharacters);
             for(CharacterTurn character : this.turnReadyCharacters) {
-                System.out.println(character.getDistance());
+                if(character.isPlayerCharacter()){
+                    this.playerTurn(character.getPlayerCharacter());
+                } else {
+                    this.enemyTurn(character.getEnemyCharacter());
+                }
             }
         }
+    }
+    
+    public ArrayList<CharacterTurn> getSortedList(ArrayList<CharacterTurn> unsortedList) {
+        ArrayList<Double> distanceOverList = new ArrayList<Double>();
+        ArrayList<CharacterTurn> sortedCharacterList = new ArrayList<CharacterTurn>();
+        for(CharacterTurn character : unsortedList){
+            if(distanceOverList.isEmpty()) {
+                distanceOverList.add(character.getDistance());
+                sortedCharacterList.add(character);
+            } else {
+                for(int i = 0; i < distanceOverList.size(); i++) {
+                    if (character.getDistance() >= distanceOverList.get(i)){
+                        distanceOverList.add(i, character.getDistance());
+                        sortedCharacterList.add(i, character);
+                        break;
+                    } else if(character.getDistance() < distanceOverList.get(i) && i == distanceOverList.size() - 1) {
+                        distanceOverList.add(character.getDistance());
+                        sortedCharacterList.add(character);
+                    }
+                }
+            }
+        }
+        return sortedCharacterList;
+    }
+    
+    public void playerTurn(PlayerCharacter character) {
+        
+    }
+    
+    public void enemyTurn(EnemyCharacter character) {
+        
     }
 }
