@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * @version (a version number or a date)
  */
 public class CombatSupervisor {
+    private MenuNavigator menuNavigator;
     private EnemyParty enemyParty;
     private Player player;
     private ArrayList<EnemyCharacter> enemyCombattants;
@@ -14,7 +15,8 @@ public class CombatSupervisor {
     private ArrayList<CharacterTurn> turnReadyCharacters;
     private int playerCount;
     private int enemyCount;
-    public CombatSupervisor(Player player, EnemyParty enemyParty) {
+    public CombatSupervisor(Player player, EnemyParty enemyParty, MenuNavigator menuNavigator) {
+        this.menuNavigator = menuNavigator;
         this.playerCount = 0;
         this.enemyCount = 0;
         this.enemyParty = enemyParty;
@@ -75,7 +77,7 @@ public class CombatSupervisor {
     }
     
     public void playerTurn(PlayerCharacter character) {
-        
+        this.menuNavigator.setMenuType(MenuType.COMBATMENU);
     }
     
     public void enemyTurn(EnemyCharacter character) {

@@ -51,7 +51,7 @@ public class PlayerControls {
                     Scanner citacMapa = new Scanner(mapa);
                     Scanner citacPlayer = new Scanner(playerData);
                     if (citacMapa.hasNext() && citacPlayer.hasNext()) {
-                        this.game = new Game("files/saves/");
+                        this.game = new Game("files/saves/", this.menuNavigator);
                         return;
                     } else{
                         System.out.println("FILE NOT FOUND");
@@ -66,11 +66,11 @@ public class PlayerControls {
                     }
                     this.menuNavigator.hideSelectedObject();
                     this.menuNavigator.setMenuType(MenuType.NOMENU);
-                    this.game = new Game("files/newGame/");
+                    this.game = new Game("files/newGame/", this.menuNavigator);
                     this.player = this.game.getPlayer();
                     break;
                 case EXITGAME:
-                        this.game.saveGame();
+                    this.game.saveGame();
                     System.exit(0);
                     break;
                 case ATTACK:

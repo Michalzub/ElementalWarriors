@@ -1,6 +1,7 @@
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * Vytvorí mapu, hráča a manažera, ktorý ich bude spravovať.
@@ -13,15 +14,18 @@ public class Game {
     private Player player;
     private GameMode mode;
     private String filePath;
+    private MenuNavigator menuNavigator;
+    private CombatSupervisor combatSupervisor;
     
     /**
      * Konštruktor dostane miesto úložiska, podľa ktorého vybere súbor z kadiaľ má brať dáta.
      */
-    public Game(String filePath) throws FileNotFoundException {
+    public Game(String filePath, MenuNavigator menuNavigator) throws FileNotFoundException {
         this.filePath = filePath;
         this.mode = GameMode.EXPLORATION;
         this.map = new Map(this.filePath + "mapa.txt");
         this.player = new Player(this.filePath + "playerData.txt");
+        this.menuNavigator = menuNavigator;
     }
     
     public void changeMode() {
@@ -29,6 +33,9 @@ public class Game {
             this.mode = GameMode.COMBAT;
             this.player.hidePlayer();
             this.map.hideMap();
+            Random r = new Random();
+            int randomNumber = r.nextInt(EnemyGroups.values().length);
+            this.combatSupervisor = new CombatSupervisor(this.player, new EnemyParty(EnemyGroups.values()[randomNumber]),this.menuNavigator);
         } else if (this.mode == GameMode.COMBAT) {
             this.mode = GameMode.EXPLORATION;
             this.map.showMap();
