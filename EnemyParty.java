@@ -1,15 +1,19 @@
 import java.util.ArrayList;
 /**
- * Write a description of class EnemyParty here.
+ * Trieda sa stará o poskladanie nepriatelskej skupiny
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Michal Zúbek
+ * @version 0.9
  */
 public class EnemyParty {
     
     private ArrayList<EnemyCharacter> enemyParty;
     private EnemyGroups enemyGroup;
     
+    /**
+     * podla typu postavá nepriatelskú skupinu
+     * @param enemyGroup typ nepriatelskej skupiny
+     */
     public EnemyParty(EnemyGroups enemyGroup) {
         
         this.enemyGroup = enemyGroup;
@@ -41,6 +45,10 @@ public class EnemyParty {
         }
     }
     
+    /**
+     * vrati list so všetkými nepriatelmi
+     * @return ArrayList<EnemyCharacter>
+     */
     public ArrayList<EnemyCharacter> getEnemyParty() {
         return this.enemyParty;
     }

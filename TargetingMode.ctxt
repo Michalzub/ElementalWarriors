@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=TargetingMode
-comment0.text=\r\n\ Enumeration\ class\ TargetingMode\ -\ write\ a\ description\ of\ the\ enum\ class\ here\r\n\ \r\n\ @author\ (your\ name\ here)\r\n\ @version\ (version\ number\ or\ date\ here)\r\n
+comment0.text=\r\n\ Enum\ m\u00F3du\ targetingu\ (vyberu\ ciela/targetu).\ ma\ obrazok\ sipky\ a\ poziciu\ Y\ pre\ zobrazenie\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.9\r\n
 comment1.params=pictureFilePath\ posY
 comment1.target=TargetingMode(java.lang.String,\ int)
 comment2.params=
 comment2.target=Obrazok\ getPicture()
+comment2.text=\r\n\ vrati\ obrazok\ sipky\r\n\ @return\ Obrazok\ picture\r\n
 comment3.params=
 comment3.target=int\ getPosY()
+comment3.text=\r\n\ vrati\ poziciu\ na\ Y\ osi\r\n\ @return\ int\ posY\r\n
 numComments=4

@@ -1,14 +1,18 @@
 #BlueJ class context
 comment0.target=EnemyGroups
-comment0.text=\r\n\ Enumeration\ class\ EnemyGroups\ -\ write\ a\ description\ of\ the\ enum\ class\ here\r\n\ \r\n\ @author\ (your\ name\ here)\r\n\ @version\ (version\ number\ or\ date\ here)\r\n
+comment0.text=\r\n\ Enum\ s\ typami\ r\u00F4znych\ nepriatelskych\ skupin\ proti\ ktorym\ mo\u017Eno\ bojova\u0165\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.9\r\n
 comment1.params=ratCount\ wolfCountmy2\ banditCount\ banditBossCount
 comment1.target=EnemyGroups(int,\ int,\ int,\ int)
 comment2.params=
 comment2.target=int\ getRatCount()
+comment2.text=\r\n\ vrati\ pocet\ potkanov\r\n\ @return\ int\ ratCount\r\n
 comment3.params=
 comment3.target=int\ getWolfCount()
+comment3.text=\r\n\ vrati\ pocet\ vlkov\r\n\ @return\ int\ wolfCount\r\n
 comment4.params=
 comment4.target=int\ getBanditCount()
+comment4.text=\r\n\ vrati\ pocet\ banditov\r\n\ @return\ int\ banditCount\r\n
 comment5.params=
 comment5.target=int\ getBanditBossCount()
+comment5.text=\r\n\ vrati\ pocet\ bandit\ bossov\r\n\ @return\ int\ banditBossCount\r\n
 numComments=6

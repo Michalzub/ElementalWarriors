@@ -34,10 +34,18 @@ public enum SpaceType {
         this.pictureFilePath = pictureFilePath;
     }
     
+    /**
+     * vrati typ policka
+     * @return SpaceType type
+     */
     public int getType() {
         return this.type;
     }
     
+    /**
+     * vrati String cestu k Suboru obrazku
+     * @return String PictureFilePath
+     */
     public String getPictureFilePath() {
         return this.pictureFilePath;
     }

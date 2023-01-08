@@ -9,10 +9,8 @@ public class Item {
 
     private ItemType itemType;
 
-    /**
-     *   
-     *   Vytvorí náhodný item.
-     *
+    /**  
+     *   Vytvorí náhodný item a nastaví mu typ.
      */
     public Item() {
         Random r = new Random();
@@ -21,7 +19,8 @@ public class Item {
     }
 
     /**
-     *   Nastaví typ itemu.
+     *   podla pozadovaneho typu itemu vo forme stringu nastavi typ itemu
+     *   @param pozadovanyTyp string s nazvom itemu
      */
     public void setTyp(String pozadovanyTyp) {
         switch (pozadovanyTyp) {
@@ -41,15 +40,27 @@ public class Item {
                 return;
         }
     }
-
+    
+    /**
+     * vrati nazov itemu
+     * @return String name
+     */
     public String getName() {
         return this.itemType.getName();
     }
-
+    
+    /**
+     * vrati silu itemu
+     * @return double strength
+     */
     public double getStrength() {
         return this.itemType.getStrength();
     }
-
+    
+    /**
+     * vrati typ itemu
+     * @return ItemType
+     */
     public ItemType getType() {
         return this.itemType;
     }

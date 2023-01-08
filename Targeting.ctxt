@@ -1,18 +1,25 @@
 #BlueJ class context
 comment0.target=Targeting
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Targeting\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Star\u00E1\ sa\ o\ v\u00FDber\ ciela/targetu\r\n\ \r\n\ @author\ MichalZ\u00FAbek\ \r\n\ @version\ 0.9\r\n
 comment1.params=allCombattants\ mode
 comment1.target=Targeting(java.util.ArrayList,\ TargetingMode)
+comment1.text=\r\n\ roztriedi\ postavy\ v\ boji\ na\ postavy\ hraca\ a\ nepriatela\r\n\ nastavi\ targeting\ mod\ a\ vybere\ pociatocny\ target\r\n\ @param\ allCombattants\ list\ so\ v\u0161etk\u00FDmi\ bojovn\u00EDkmi\r\n\ @param\ mode\ mode\ v\ ktorom\ chceme\ vybera\u0165\ ciel/target\r\n
 comment2.params=
 comment2.target=void\ initialTargetSelect()
+comment2.text=\r\n\ vybere\ prvy\ target\ z\ listu\ targetov\ a\ oznaci\ ho\r\n
 comment3.params=direction
 comment3.target=void\ changeTarget(int)
+comment3.text=\r\n\ podla\ vlozeneho\ smeru\ cykluje\ cez\ mozne\ targety\ a\ zobrazi\ jeho\ oznacenie\r\n\ @param\ direction\ smer\ do\ ktoreho\ chceme\ ist\ bud\ 1\ alebo\ -1\r\n
 comment4.params=
 comment4.target=void\ hideTargeting()
+comment4.text=\r\n\ skryje\ oznacenie\ targetu\r\n
 comment5.params=mode
 comment5.target=void\ setTargettingMode(TargetingMode)
+comment5.text=\r\n\ nastavi\ mod\ targetingu\ a\ vybere\ prvy\ target\r\n
 comment6.params=
 comment6.target=CharacterTurn\ getAllyTarget()
+comment6.text=\r\n\ vrati\ vybrateho\ spolubojovnika\r\n\ @return\ CharacterTurn\ allyTarget\r\n
 comment7.params=
 comment7.target=CharacterTurn\ getEnemyTarget()
+comment7.text=\r\n\ vrati\ vybrateho\ nepriatela\r\n\ @return\ CharacterTurn\ enemyTarget\r\n
 numComments=8

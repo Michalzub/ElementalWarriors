@@ -1,16 +1,21 @@
 #BlueJ class context
 comment0.target=EnemyStatBlock
-comment0.text=\r\n\ Enumeration\ class\ Enemy\ -\ write\ a\ description\ of\ the\ enum\ class\ here\r\n\ \r\n\ @author\ (your\ name\ here)\r\n\ @version\ (version\ number\ or\ date\ here)\r\n
+comment0.text=\r\n\ Enum\ so\ z\u00E1kadn\u00FDmi\ statmi\ nepriatela\ a\ jeho\ typom\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.9\r\n
 comment1.params=health\ mana\ damage\ speed\ pictureFilePath
 comment1.target=EnemyStatBlock(double,\ double,\ double,\ double,\ java.lang.String)
 comment2.params=
 comment2.target=double\ getHeath()
+comment2.text=\r\n\ vrati\ zivoty\r\n\ @return\ double\ health\r\n
 comment3.params=
 comment3.target=double\ getMana()
+comment3.text=\r\n\ vrati\ manu\r\n\ @return\ double\ mana\r\n
 comment4.params=
 comment4.target=double\ getDamage()
+comment4.text=\r\n\ vrati\ damage\r\n\ @return\ double\ damage\r\n
 comment5.params=
 comment5.target=double\ getSpeed()
+comment5.text=\r\n\ vrati\ speed\r\n\ @return\ double\ speed\r\n
 comment6.params=
 comment6.target=java.lang.String\ getPictureFilePath()
+comment6.text=\r\n\ vrati\ String\ cesty\ k\ obrazku\r\n\ @return\ String\ pictureFilePath\r\n
 numComments=7

@@ -22,6 +22,8 @@ public class Game {
     
     /**
      * Konštruktor dostane miesto úložiska, podľa ktorého vybere súbor z kadiaľ má brať dáta.
+     * @param filePath cesta k zloske so suborom
+     * @param menuNavigator potrebny pre ziskanie zvoleneho objektu pri combate
      */
     public Game(String filePath, MenuNavigator menuNavigator) throws FileNotFoundException {
         this.filePath = filePath;
@@ -33,6 +35,10 @@ public class Game {
         this.enemyTotal = this.map.getEnemyTotal();
     }
     
+    /**
+     * zmení mod, skryje hraca, mapu vytvorí nepriatela a zapne combat
+     * alebo ked sa skonci combat ukaze mapu a hraca
+     */
     public void changeMode()  {
         if (this.mode == GameMode.EXPLORATION) {
             
@@ -76,10 +82,24 @@ public class Game {
         } 
     }
     
+    /**
+     * vrati hraca
+     * @return Player
+     */
     public Player getPlayer() {
         return this.player;
     }
     
+    /**
+     * Metoda zisti co sa nachadza na dalsej pozicii podla smeru hraca
+     * pri rock sa hrac nepohne
+     * pri chest hrac sa posunie, premeni policko na grass a dostane nahodny item,
+     * 
+     * @param distanceX posun po X osi bud 1, -1 alebo 0
+     * @param distanceY posun po Y osi bud 1, -1 alebo 0
+     * 
+     * @return SpaceType vrati typ policka na ktore sa chce posunut
+     */
     public SpaceType checkAndMove(int distanceX, int distanceY) {
         int nextX = this.player.getPlayerX() + distanceX;
         int nextY = this.player.getPlayerY() + distanceY;
@@ -105,20 +125,34 @@ public class Game {
         return nextType;
     }
     
+    /**
+     * vrati mod hry
+     * @return GameMode mode
+     */
     public GameMode getMode() {
         return this.mode;
     }
     
+    /**
+     * skryje pozostatky obrazkov z mapy a hraca
+     */
     public void hideRemnants() {
         this.player.hidePlayer();
         this.map.hideMap();
     }
     
+    /**
+     * zobrazi mapu a hraca
+     */
     public void showExploration() {
-        this.player.showPlayer();
         this.map.showMap();
+        this.player.showPlayer();
     }
     
+    /**
+     * vrati spravcu combatu
+     * @return CombatSupervisor
+     */
     public CombatSupervisor getCombatSupervisor() {
         return this.combatSupervisor;
     }

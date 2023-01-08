@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.lang.InterruptedException;
 
 /**
- * Write a description of class CombatSupervisor here.
+ * Trieda CombatSupervisor sa stará o všetko čo sa deje v combate
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Michal Zúbek
+ * @version 0.9
  */
 public class CombatSupervisor {
     private MenuNavigator menuNavigator;
@@ -22,6 +22,14 @@ public class CombatSupervisor {
     
     private Targeting targeting;
     
+    /**
+     * vyberie bojovníkov a zabalí ich do triedy CharacterTurn aby s nimi mohol lahšie pracovať
+     * roztriedi ich na 2 typy - postavy hrača a postavy nepriatela
+     * nakoniec započne prvé kolo
+     * @param player hráč ktorého skupina bude bojovať
+     * @param enemyParty nepriatelská skupina
+     * @param menuNavigator MenuNavigator ktory umožní rozpoznať input
+     */
     public CombatSupervisor(Player player, EnemyParty enemyParty, MenuNavigator menuNavigator) {
         // this.menuNavigator = menuNavigator;
         // this.menuNavigator.hideSelectedObject();
@@ -53,6 +61,11 @@ public class CombatSupervisor {
         this.roundStart();
     }
     
+    /**
+     * spustí kolo ak v hre je aspoň jeden člen z každého týmu živý tak sa pokračuje
+     * ak list pripravených postáv je prázdny zavolá metódu rollInitiative
+     * ak list nieje prázdny zavolá metódu turnTime
+     */
     public void roundStart()  {
         System.out.println("the player character count is " + this.playerCount);
         System.out.println("the enemy character count is " + this.enemyCount);
@@ -65,9 +78,15 @@ public class CombatSupervisor {
                 System.out.println("we are about to turnTime");
                 this.turnTime();
             }
+        } else {
+            
         }
     }
     
+    /**
+     * metóda vypočítava kto je na rade, pri každom zavolaní sa postavám pridá do distancu ich speed a ak niekto presiahne 100 tak sa pridá do listu pripravených
+     * ak náhodou viac hráčou sa dostalo do listu pripravených zavolá metódu getSortedList na určenie ich poradia
+     */
     public void rollInitiative() {
         while(this.turnReadyCharacters.isEmpty()){
             for(CharacterTurn character : this.allCombattants) {
@@ -80,6 +99,9 @@ public class CombatSupervisor {
         this.roundStart();
     }
     
+    /**
+     * vymaže postavu z listu pripravených a pustí jeho kolo
+     */
     public void turnTime() {
         CharacterTurn tempCharacterTurn = this.turnReadyCharacters.remove(0);
         if(tempCharacterTurn.isPlayerCharacter()){
@@ -89,6 +111,11 @@ public class CombatSupervisor {
         }
     }
     
+    /**
+     * usporiada list pripravených podla ich poradia
+     * @param unsortedList vložiť neusporiadaný list
+     * @return ArrayList<CharacterTurn> vráti usporiadaný list
+     */
     public ArrayList<CharacterTurn> getSortedList(ArrayList<CharacterTurn> unsortedList) {
         ArrayList<Double> distanceOverList = new ArrayList<Double>();
         ArrayList<CharacterTurn> sortedCharacterList = new ArrayList<CharacterTurn>();
@@ -112,6 +139,11 @@ public class CombatSupervisor {
         return sortedCharacterList;
     }
     
+    /**
+     * nastaví menu na combat a uloží postavu do vybratej Postavy
+     * @param character postava ktorá je na ťahu
+     * 
+     */
     public void playerTurn(CharacterTurn character) {
         System.out.println("Players turn in progress");
         this.menuNavigator.setMenuType(MenuType.COMBATMENU);

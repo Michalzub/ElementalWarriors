@@ -1,13 +1,24 @@
 
 /**
- * Enumeration class TargetingMode - write a description of the enum class here
+ * Enum módu targetingu (vyberu ciela/targetu). ma obrazok sipky a poziciu Y pre zobrazenie
  * 
- * @author (your name here)
- * @version (version number or date here)
+ * @author Michal Zúbek
+ * @version 0.9
  */
 public enum TargetingMode {
+    /**
+     * mod targeting na nepriatela
+     */
     ENEMYTARGETING("files/obrazky/menu/arrow.png", 175),
+    
+    /**
+     * mod targeting na spolubojovnika
+     */
     ALLYTARGETING("files/obrazky/menu/arrow.png", 375),
+    
+    /**
+     * mod bez targetingu
+     */
     NOTTARGETING("none", 0);
     
     private Obrazok picture;
@@ -20,10 +31,18 @@ public enum TargetingMode {
         this.posY = posY;
     }
     
+    /**
+     * vrati obrazok sipky
+     * @return Obrazok picture
+     */
     public Obrazok getPicture() {
         return this.picture;
     }
     
+    /**
+     * vrati poziciu na Y osi
+     * @return int posY
+     */
     public int getPosY() {
         return this.posY;
     }

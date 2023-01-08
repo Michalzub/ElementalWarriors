@@ -41,6 +41,10 @@ public enum MenuType {
         }
     }
     
+    /**
+     * vrati pozadie menu
+     * @return Obrazok menuBackground
+     */
     public Obrazok getMenuBackground() {
         return this.menuBackground;
     }

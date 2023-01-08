@@ -30,11 +30,19 @@ public enum ItemType {
         this.name = name;
         this.strength = strength;
     }
-
+    
+    /**
+     * vrati nazov itemu
+     * @return String name
+     */
     public String getName() {
         return this.name;
     }
-
+    
+    /**
+     * vrati silu itemu
+     * @return double strength
+     */
     public double getStrength() {
         return this.strength;
     }

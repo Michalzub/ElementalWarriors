@@ -60,10 +60,6 @@ public class MenuNavigator {
         this.highlightSelectedObject();
     }
     
-    public MenuObject getSelectedMenuObject() {
-        return this.selectedMenuObject;
-    }
-    
     /**
     * nastaví typ menu
     * @param menuType pozadovany MenuType
@@ -74,10 +70,6 @@ public class MenuNavigator {
         this.menu.setMenuType(menuType);
         this.initialSelectedObject();
         this.highlightSelectedObject();
-    }
-    
-    public MenuType getMenuType(){
-        return this.menu.getMenuType();
     }
     
     /**
@@ -98,5 +90,21 @@ public class MenuNavigator {
                 this.selectedMenuObject = MenuObject.ATTACK;
                 break;
         }
+    }
+        
+    /**
+     * vrati typ menu ktore ovlada
+     * @return MenuType
+     */
+    public MenuType getMenuType(){
+        return this.menu.getMenuType();
+    }
+    
+    /**
+     * vrati typ vybratého tlačítka
+     * @return MenuObject
+     */
+    public MenuObject getSelectedMenuObject() {
+        return this.selectedMenuObject;
     }
 }

@@ -1,18 +1,24 @@
 #BlueJ class context
 comment0.target=Element
-comment0.text=\r\n\ Enumeration\ class\ element\ -\ write\ a\ description\ of\ the\ enum\ class\ here\r\n\ \r\n\ @author\ (your\ name\ here)\r\n\ @version\ (version\ number\ or\ date\ here)\r\n
+comment0.text=\r\n\ Enum\ element\ uschov\u00E1va\ multipliere(nasobky)\ statov,\ obrazok\ a\ postavenie\ vo\u010Di\ ostatn\u00FDm\ elementom\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.9\r\n
 comment1.params=healthMultiplier\ manaMultiplier\ damageMultiplier\ speedMultiplier\ pictureFilePath\ fireMatchup\ waterMatchup\ earthMatchup\ airMatchup
 comment1.target=Element(double,\ double,\ double,\ double,\ java.lang.String,\ double,\ double,\ double,\ double)
 comment2.params=damage\ targetElement
 comment2.target=double\ calculate(java.lang.Double,\ Element)
+comment2.text=\r\n\ vrati\ vypocitany\ damage\ na\ zaklade\ elementu\r\n\ @return\ double\ damage\r\n
 comment3.params=
 comment3.target=double\ getHealthMultiplier()
+comment3.text=\r\n\ vrati\ multiplier\ healthu\r\n\ @return\ double\ \r\n
 comment4.params=
 comment4.target=double\ getManaMultiplier()
+comment4.text=\r\n\ vrati\ multiplier\ many\r\n\ @return\ double\ \r\n
 comment5.params=
 comment5.target=double\ getDamageMultiplier()
+comment5.text=\r\n\ vrati\ multiplier\ damagu\r\n\ @return\ double\ \r\n
 comment6.params=
 comment6.target=double\ getSpeedMultiplier()
+comment6.text=\r\n\ vrati\ multiplier\ speedu\r\n\ @return\ double\ \r\n
 comment7.params=
 comment7.target=Obrazok\ getPicture()
+comment7.text=\r\n\ vrati\ obrazok\ element\ postavy\r\n\ @return\ Obrazok\r\n
 numComments=8

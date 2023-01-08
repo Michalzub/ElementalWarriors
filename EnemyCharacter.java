@@ -1,9 +1,8 @@
-
 /**
- * Write a description of class PlayerCharacter here.
+ * Postava nepriatela ktora ma vlastne zivoty, manu, rychlost, damage a element
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Michal Zúbek 
+ * @version 0.9
  */
 public class EnemyCharacter {
     private double health;
@@ -23,11 +22,21 @@ public class EnemyCharacter {
         this.picture = new Obrazok(this.statBlock.getPictureFilePath());
     }
     
+    /**
+     * pouzije utok na target a ak nepriatel zomrie vrati true
+     * @return boolean true ak targetu padnu zivoty pod 1 a false naopak
+     */
     public void attack(PlayerCharacter target){
         target.takeDamage(this.damage);
     }
-    public void elementalHit(){
     
+    /**
+     * pouzije elementany utok na target, vypocita jeho damage a ak nepriatel zomrie vrati true
+     * @return boolean true ak targetu padnu zivoty pod 1 a false naopak
+     */
+    public boolean elementalHit(PlayerCharacter target){
+        Double elementalDamage = element.calculate(this.damage, target.getElement());
+        return target.takeDamage(this.damage);
     }
     
     public boolean takeDamage(double damage){
@@ -39,23 +48,50 @@ public class EnemyCharacter {
         }
     }
     
-    
+    /**
+     * vrati zivoty postavy
+     * @return double health
+     */
     public double getEnemyHealth() {
         return this.health;
     }
+    
+    /**
+     * vrati manu postavy
+     * @return double mana
+     */
     public double getEnemyMana() {
         return this.mana;
     }
+    
+    /**
+     * vrati speed postavy
+     * @return double speed
+     */
     public double getEnemySpeed() {
         return this.speed;
     }
+    
+    /**
+     * vrati element postavy
+     * @return Element
+     */
     public Element getEnemyElement() {
         return this.element;
     }
+    
+    /**
+     * vrati statBlock postavy
+     * @return EnemyStatBlock
+     */
     public EnemyStatBlock getStatBlock() {
         return this.statBlock;
     }
     
+    /**
+     * vrati obrazok postavy
+     * @return Obrazok picture
+     */
     public Obrazok getPicture() {
         return this.picture;
     }

@@ -5,4 +5,5 @@ comment1.params=menuBackgroundFile\ posX\ posY
 comment1.target=MenuType(java.lang.String,\ int,\ int)
 comment2.params=
 comment2.target=Obrazok\ getMenuBackground()
+comment2.text=\r\n\ vrati\ pozadie\ menu\r\n\ @return\ Obrazok\ menuBackground\r\n
 numComments=3

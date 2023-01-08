@@ -9,6 +9,12 @@ public class Space {
     private SpaceType spaceType;
     private Obrazok picture;
     
+    /**
+     * Postava a nakresli policko
+     * @param posX int - jeho pozicia na X osi
+     * @param posX int - jeho pozicia na X osi
+     * @param spaceType SpaceType - jeho typ
+     */
     public Space(int posX, int posY, SpaceType spaceType) {
         this.spaceType = spaceType;
         this.picture = new Obrazok(this.spaceType.getPictureFilePath());
@@ -17,16 +23,12 @@ public class Space {
     
     /**
     *  Zmení polohu obrázku a zobrazí ho.
-    *  @param posX pozícia X na ktorej sa má zobraziť
-    *  @param posZ pozícia Z na ktorej sa má zobraziť
+    *  @param posX int - pozícia X na ktorej sa má zobraziť
+    *  @param posY int - pozícia Y na ktorej sa má zobraziť
     */
     public void drawPicture(int posX, int posY) {
         this.picture.zmenPolohu(posX + 25, posY + 25);
         this.picture.zobraz();
-    }
-    
-    public Obrazok getPicture() {
-        return this.picture;
     }
     
     /**
@@ -37,7 +39,19 @@ public class Space {
         this.picture.zmenObrazok(this.spaceType.getPictureFilePath());
     }
     
+    /**
+     * vrati typ policka
+     * @return SpaceType spaceType
+     */
     public SpaceType getType() {
         return this.spaceType;
+    }
+    
+    /**
+     * Vrati obrazok policka
+     * @return Obrazok picture
+     */
+    public Obrazok getPicture() {
+        return this.picture;
     }
 }

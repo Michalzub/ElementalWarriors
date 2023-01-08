@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 /**
- * Write a description of class Targeting here.
+ * Stará sa o výber ciela/targetu
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author MichalZúbek 
+ * @version 0.9
  */
 public class Targeting {
     private Player player;
@@ -15,6 +15,12 @@ public class Targeting {
     private int objectSelector;
     private TargetingMode mode;
     
+    /**
+     * roztriedi postavy v boji na postavy hraca a nepriatela
+     * nastavi targeting mod a vybere pociatocny target
+     * @param allCombattants list so všetkými bojovníkmi
+     * @param mode mode v ktorom chceme vyberať ciel/target
+     */
     public Targeting(ArrayList<CharacterTurn> allCombattants, TargetingMode mode) {
         this.player = player;
         this.playerCharacters = new ArrayList<CharacterTurn>();
@@ -30,10 +36,11 @@ public class Targeting {
         
         this.mode = mode;
         this.initialTargetSelect();
-        
-        
     }
     
+    /**
+     * vybere prvy target z listu targetov a oznaci ho
+     */
     public void initialTargetSelect() {
         this.objectSelector = 0;
         switch(this.mode) {
@@ -53,6 +60,10 @@ public class Targeting {
         }
     }
     
+    /**
+     * podla vlozeneho smeru cykluje cez mozne targety a zobrazi jeho oznacenie
+     * @param direction smer do ktoreho chceme ist bud 1 alebo -1
+     */
     public void changeTarget(int direction){
         this.objectSelector += direction;
         switch(this.mode) {
@@ -81,17 +92,33 @@ public class Targeting {
         }
     }
     
+    /**
+     * skryje oznacenie targetu
+     */
     public void hideTargeting() {
         this.mode.getPicture().skry();
     }
     
+    /**
+     * nastavi mod targetingu a vybere prvy target
+     */
     public void setTargettingMode(TargetingMode mode) {
         this.mode = mode;
         this.initialTargetSelect();
     }
+    
+    /**
+     * vrati vybrateho spolubojovnika
+     * @return CharacterTurn allyTarget
+     */
     public CharacterTurn getAllyTarget() {
         return this.allyTarget;
     }
+    
+    /**
+     * vrati vybrateho nepriatela
+     * @return CharacterTurn enemyTarget
+     */
     public CharacterTurn getEnemyTarget() {
         return this.enemyTarget;
     }

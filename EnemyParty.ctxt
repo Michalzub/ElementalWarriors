@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=EnemyParty
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ EnemyParty\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Trieda\ sa\ star\u00E1\ o\ poskladanie\ nepriatelskej\ skupiny\r\n\ \r\n\ @author\ Michal\ Z\u00FAbek\r\n\ @version\ 0.9\r\n
 comment1.params=enemyGroup
 comment1.target=EnemyParty(EnemyGroups)
+comment1.text=\r\n\ podla\ typu\ postav\u00E1\ nepriatelsk\u00FA\ skupinu\r\n\ @param\ enemyGroup\ typ\ nepriatelskej\ skupiny\r\n
 comment2.params=
 comment2.target=java.util.ArrayList\ getEnemyParty()
+comment2.text=\r\n\ vrati\ list\ so\ v\u0161etk\u00FDmi\ nepriatelmi\r\n\ @return\ ArrayList<EnemyCharacter>\r\n
 numComments=3

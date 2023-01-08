@@ -5,7 +5,6 @@ import java.util.Scanner;
  * Zostaví mapu ako pole polí z políčiek podla textového dokumentu.
  * Uschováva taktiež počet nepriatelov na mape.
  * 
- * @param suborMapa string úložného miesta
  * 
  * @author Michal Zúbek
  * @version 0.1
@@ -17,6 +16,12 @@ public class Map {
     private Player player;
     private int enemyTotal;
     
+    /**
+     * Zostaví mapu ako pole polí z políčiek podla textového dokumentu.
+     * Uschováva taktiež počet nepriatelov na mape.
+     * 
+     * @param suborMapa string úložného miesta
+     */
     public Map(String suborMapa) throws FileNotFoundException {
         this.enemyTotal = 0;
         this.txtMapa = new File(suborMapa);
@@ -65,7 +70,7 @@ public class Map {
     }
     
     /**
-     * ukáže prvkz mapy
+     * zobrazi prvky mapy
      */
     public void showMap() {
         for (int i = 0; i < (this.spaceSideLength); i++) {
@@ -77,19 +82,36 @@ public class Map {
     
     /**
      * Zavolá metodu daného políčka changeToGrass
+     * @param posX int - pozicia na X osi
+     * @param posY int - pozicia na Y osi
      */
     public void changeToGrass(int posX, int posY) {
         this.spaceGrid[posY][posX].changeToGrass();
     }
     
+    /**
+     * vrati typ policka na danej pozicii
+     * @param posX int - pozicia na X osi
+     * @param posY int - pozicia na Y osi
+     * 
+     * @return SpaceType
+     */
     public SpaceType getSpaceType(int posX, int posY) {
         return this.spaceGrid[posY][posX].getType();
     }
-
+    
+    /**
+     * vrati celú mapu SpaceGrid 
+     * @return Space[][]
+     */
     public Space[][] getSpaceGrid() {
         return this.spaceGrid;
     }
     
+    /**
+     * vrati pocet nepriatelov na mape
+     * @return int
+     */
     public int getEnemyTotal() {
         return this.enemyTotal;
     }

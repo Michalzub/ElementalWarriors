@@ -9,6 +9,10 @@ import java.util.ArrayList;
 public class Menu {
     private ArrayList<MenuObject> menuObjectList;
     private MenuType menuType;
+    
+    /**
+     * nastavi typ menu, pripravi list pre tlacitka menu a postava menu
+     */
     public Menu() {
         this.menuType = MenuType.MAINMENU;
         this.menuObjectList = new ArrayList<MenuObject>();
@@ -79,10 +83,18 @@ public class Menu {
         this.menuBuild();
     }
     
+    /**
+     * vrati list tlacitok ktore su teraz v menu
+     * @return ArrayList<MenuObject>
+     */
     public ArrayList<MenuObject> getMenuObjectList() {
         return this.menuObjectList;
     }
     
+    /**
+     * vrati typ menu
+     * @return MenuType
+     */
     public MenuType getMenuType() {
         return this.menuType;
     }
