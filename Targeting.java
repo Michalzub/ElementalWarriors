@@ -18,6 +18,7 @@ public class Targeting {
         this.player = player;
         this.enemyParty = enemyParty;
         this.combattants = combattants;
+        System.out.println("Did we create a targeting");
         this.mode = mode;
         this.initialTargetSelect();
         
@@ -36,6 +37,9 @@ public class Targeting {
                 this.enemyTarget = this.enemyParty.get(this.objectSelector);
                 this.mode.getPicture().zmenPolohu(50 + 100 * this.objectSelector, this.mode.getPosY());
                 this.mode.getPicture().zobraz();
+                break;
+            case NOTTARGETING:
+                System.out.println("Somehow we got NOTTARGETING mode");
                 break;
         }
     }
@@ -62,6 +66,9 @@ public class Targeting {
                 this.enemyTarget = this.enemyParty.get(this.objectSelector);
                 this.mode.getPicture().zmenPolohu(50 + 100 * this.objectSelector, this.mode.getPosY());
                 this.mode.getPicture().zobraz();
+                break;
+            case NOTTARGETING:
+                System.out.println("Somehow we got NOTTARGETING mode");
                 break;
         }
     }

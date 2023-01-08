@@ -9,7 +9,6 @@ import java.lang.InterruptedException;
  */
 public class CombatSupervisor {
     private MenuNavigator menuNavigator;
-    private Game game;
     private EnemyParty enemyParty;
     private Player player;
     private ArrayList<EnemyCharacter> enemyCombattants;
@@ -22,10 +21,9 @@ public class CombatSupervisor {
     
     private Targeting targeting;
     
-    public CombatSupervisor(Game game, Player player, EnemyParty enemyParty, MenuNavigator menuNavigator) throws InterruptedException{
-        this.menuNavigator = menuNavigator;
-        this.game = game;
-        this.menuNavigator.hideSelectedObject();
+    public CombatSupervisor(Player player, EnemyParty enemyParty, MenuNavigator menuNavigator) {
+        // this.menuNavigator = menuNavigator;
+        // this.menuNavigator.hideSelectedObject();
         this.playerCount = 0;
         this.enemyCount = 0;
         this.enemyParty = enemyParty;
@@ -46,39 +44,44 @@ public class CombatSupervisor {
         for(EnemyCharacter character : this.enemyCombattants) {
             character.getPicture().zmenPolohu(50 + 100 * this.enemyCount, 100);
             character.getPicture().zobraz();
-            System.out.println("Enemy Shown");
             CharacterTurn tempCharTurn = new CharacterTurn(null, character, false);
             this.allCombattants.add(tempCharTurn);
             this.enemyCount += 1;
         }
-        this.rollInitiative();
-        this.game.changeMode();
+        this.roundStart();
     }
     
-    public void rollInitiative() throws InterruptedException{
-        System.out.println("We got to roll initiative");
-        while(this.playerCount > 0 && this.enemyCount > 0){
-            System.out.println("we are in the while loop!");
+    public void roundStart()  {
+        System.out.println("the player character count is " + this.playerCount);
+        System.out.println("the enemy character count is " + this.enemyCount);
+        if(this.playerCount > 0 && this.enemyCount > 0) {
+            if(this.turnReadyCharacters.isEmpty()) {
+                this.rollInitiative();
+            } else {
+                this.turnTime();
+            }
+        }
+    }
+    
+    public void rollInitiative() {
+        while(this.turnReadyCharacters.isEmpty()){
             for(CharacterTurn character : this.allCombattants) {
                 if(character.addDistance() ) {
                     this.turnReadyCharacters.add(character);
                 }
             }
-            this.turnReadyCharacters = this.getSortedList(this.turnReadyCharacters);
-            for(CharacterTurn character : this.turnReadyCharacters) {
-                System.out.println(character);
-                System.out.println(character.getDistance());
-            }
-            for(CharacterTurn character : this.turnReadyCharacters) {
-                if(character.isPlayerCharacter()){
-                    this.playerTurn(character.getPlayerCharacter());
-                    System.out.println("player turn");
-                } else {
-                    this.enemyTurn(character.getEnemyCharacter());
-                    System.out.println("enemy turn");
-                }
-            }
         }
+        this.turnReadyCharacters = this.getSortedList(this.turnReadyCharacters);
+    }
+    
+    public void turnTime() {
+        CharacterTurn tempCharacterTurn = this.turnReadyCharacters.remove(0);
+        if(tempCharacterTurn.isPlayerCharacter()){
+            this.playerTurn(tempCharacterTurn.getPlayerCharacter());
+        } else {
+            this.enemyTurn(tempCharacterTurn.getEnemyCharacter());
+        }
+        System.out.println("combattants left in turnReadyChars " + this.turnReadyCharacters.size());
     }
     
     public ArrayList<CharacterTurn> getSortedList(ArrayList<CharacterTurn> unsortedList) {
@@ -104,24 +107,19 @@ public class CombatSupervisor {
         return sortedCharacterList;
     }
     
-    public void playerTurn(PlayerCharacter character) throws InterruptedException{
+    public void playerTurn(PlayerCharacter character) {
+        System.out.println("Players turn in progress");
         this.menuNavigator.setMenuType(MenuType.COMBATMENU);
-        
-        this.turnInProgress = true;
-        this.enemyCount -= 1;
-        wait();
     }
     
     public void enemyTurn(EnemyCharacter character){
-        System.out.println("test");
+        System.out.println("Enemy turn in progress");
+        this.roundStart();
     }
     
-    public void notifyWaits() {
-        
-    }
-    
-    public void startTargetting(TargetingMode mode) {
-        this.targeting = new Targeting(this.enemyCombattants, this.playerCombattants, mode);
+    public void startTargetting(TargetingMode targetingMode) {
+        System.out.println("Did we atleast get inside");
+        this.targeting = new Targeting(this.enemyCombattants, this.playerCombattants, targetingMode);
     }
     
     public void action(PlayerCharacter allyTarget, EnemyCharacter enemyTarget, MenuObject menuObject, TargetingMode targetingMode) {
@@ -130,5 +128,9 @@ public class CombatSupervisor {
         MenuObject objectType = menuObject;
         TargetingMode targetMode = targetingMode;
         //this IS WHERE YOU ENDED
+    }
+    
+    public Targeting getTargeting() {
+        return this.targeting;
     }
 }

@@ -20,10 +20,8 @@ public class CharacterTurn {
         this.distance = 0;
         if(isPlayerCharacter()) {
             this.speed = this.playerCharacter.getPlayerSpeed();
-            System.out.println("player charturn has been created");
         } else {
             this.speed = this.enemyCharacter.getEnemySpeed();
-            System.out.println("ENEMY charturn has been created");
         }
     }
     
@@ -33,12 +31,6 @@ public class CharacterTurn {
     
     public boolean addDistance() {
         this.distance += this.speed;
-        if(isPlayerCharacter()) {
-            System.out.println("this is a playerCharacter");
-        } else {
-            System.out.println("this is an enemyCharacter");
-        }
-        System.out.println("distance after adding " + this.speed + " speed is "+ this.distance);
         return this.isReady();
     }
     

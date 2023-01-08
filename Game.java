@@ -16,6 +16,7 @@ public class Game {
     private GameMode mode;
     private String filePath;
     private MenuNavigator menuNavigator;
+    
     private CombatSupervisor combatSupervisor;
     private int enemyTotal;
     
@@ -28,18 +29,27 @@ public class Game {
         this.map = new Map(this.filePath + "mapa.txt");
         this.player = new Player(this.filePath + "playerData.txt");
         this.menuNavigator = menuNavigator;
+        
         this.enemyTotal = this.map.getEnemyTotal();
     }
     
-    public void changeMode() throws InterruptedException {
+    public void changeMode()  {
         if (this.mode == GameMode.EXPLORATION) {
+            
             this.mode = GameMode.COMBAT;
             this.player.hidePlayer();
             this.map.hideMap();
+            
             Random r = new Random();
             int randomNumber = r.nextInt(EnemyGroups.values().length);
             EnemyParty tempEnemyParty = new EnemyParty(EnemyGroups.values()[randomNumber]);
-            this.combatSupervisor = new CombatSupervisor(this, this.player, tempEnemyParty, this.menuNavigator);
+            
+            this.player.hidePlayer();
+            
+            this.combatSupervisor = new CombatSupervisor(this.player, tempEnemyParty, this.menuNavigator);
+
+            
+            
         } else if (this.mode == GameMode.COMBAT) {
             this.enemyTotal -= 1;
             if(this.enemyTotal <= 0) {
@@ -70,7 +80,7 @@ public class Game {
         return this.player;
     }
     
-    public SpaceType checkAndMove(int distanceX, int distanceY) throws InterruptedException{
+    public SpaceType checkAndMove(int distanceX, int distanceY) {
         int nextX = this.player.getPlayerX() + distanceX;
         int nextY = this.player.getPlayerY() + distanceY;
         SpaceType nextType = this.map.getSpaceType(nextX, nextY);
@@ -84,13 +94,13 @@ public class Game {
                 this.player.getplayerPicture().zobraz();
                 break;
             case ENEMY:
-                 this.changeMode();
-                 this.player.playerMove(nextX, nextY);
-                 this.map.changeToGrass(this.player.getPlayerX(), this.player.getPlayerY());
-                 break;
+                this.changeMode();
+                this.player.playerMove(nextX, nextY);
+                this.map.changeToGrass(this.player.getPlayerX(), this.player.getPlayerY());
+                break;
             default:
-                 this.player.playerMove(nextX, nextY);
-                 break;
+                this.player.playerMove(nextX, nextY);
+                break;
         }
         return nextType;
     }

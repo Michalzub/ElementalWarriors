@@ -20,6 +20,7 @@ public class PlayerControls {
     
     public PlayerControls(MenuNavigator menuNavigator) {
         this.menuNavigator = menuNavigator;
+        this.targetingMode = TargetingMode.NOTTARGETING;
     }
     
     public void xKey(){
@@ -42,7 +43,7 @@ public class PlayerControls {
     }
     
     public void space() throws FileNotFoundException, IOException {
-        if (this.targeting != null) {
+        if (this.targetingMode != TargetingMode.NOTTARGETING) {
             this.combatSupervisor.action(this.targeting.getAllyTarget(),this.targeting.getEnemyTarget(), this.menuNavigator.getSelectedMenuObject(), this.targetingMode);
             
         }else if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
@@ -82,8 +83,16 @@ public class PlayerControls {
                     break;
                 case ATTACK:
                     System.out.println("ATTACK PRESSED");
-                    this.combatSupervisor.startTargetting(TargetingMode.ENEMYTARGETING);
+                    
+                    System.out.println("before creating there is " + this.targeting);
+                    this.combatSupervisor.roundStart();
+                    System.out.println(this.targetingMode);
                     this.targetingMode = TargetingMode.ENEMYTARGETING;
+                    System.out.println(this.targetingMode);
+                    this.combatSupervisor.startTargetting(this.targetingMode);
+                    this.targeting = this.combatSupervisor.getTargeting();
+                    System.out.println(this.targeting);
+                    
                     break;
                 case GUARD:
                     System.out.println("GUARD PRESSED");
@@ -140,39 +149,59 @@ public class PlayerControls {
         }
     }
     
-    public void leftArrow() throws InterruptedException{
-        if(this.targeting != null){
+    public void leftArrow() {
+        if(this.targetingMode != TargetingMode.NOTTARGETING){
+            System.out.println("before changing target");
             this.targeting.changeTarget(-1);
+            System.out.println("after changing target");
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            this.game.checkAndMove(-1, 0);
-            this.combatSupervisor = this.game.getCombatSupervisor();
+            if(this.game.checkAndMove(-1, 0) == SpaceType.ENEMY) {
+                System.out.println("before the supervisor");
+                this.combatSupervisor = this.game.getCombatSupervisor();
+                System.out.println("after the supervisor");
+            }
         }
     }
     
-    public void upArrow() throws InterruptedException{
-        if(this.menuNavigator.getMenuType() != MenuType.NOMENU) {
+    public void upArrow() {
+        if(this.targetingMode != TargetingMode.NOTTARGETING){
+            this.targeting.changeTarget(-1);
+        } else if(this.menuNavigator.getMenuType() != MenuType.NOMENU) {
             this.menuNavigator.changeSelectedMenuObject(-1);
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            this.game.checkAndMove(0, -1);
-            this.combatSupervisor = this.game.getCombatSupervisor();
+            if(this.game.checkAndMove(0, -1) == SpaceType.ENEMY) {
+                System.out.println("before the supervisor");
+                this.combatSupervisor = this.game.getCombatSupervisor();
+                System.out.println("we got the supervisor");
+            }
         }
     }
     
-    public void rightArrow() throws InterruptedException{
-        if(this.targeting != null){
+    public void rightArrow() {
+        if(this.targetingMode != TargetingMode.NOTTARGETING){
+            System.out.println("before changing target");
             this.targeting.changeTarget(1);
+            System.out.println("after changing target");
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            this.game.checkAndMove(1, 0);
-            this.combatSupervisor = this.game.getCombatSupervisor();
+            if(this.game.checkAndMove(1, 0) == SpaceType.ENEMY) {
+                System.out.println("before the supervisor");
+                this.combatSupervisor = this.game.getCombatSupervisor();
+                System.out.println("we got the supervisor");
+            }
         }
     }
     
-    public void downArrow() throws InterruptedException{
-       if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
+    public void downArrow() {
+        if(this.targetingMode != TargetingMode.NOTTARGETING){
+            this.targeting.changeTarget(-1);
+        } else if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             this.menuNavigator.changeSelectedMenuObject(1);
-       } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            this.game.checkAndMove(0, 1);
-            this.combatSupervisor = this.game.getCombatSupervisor();
+        } else if(this.game.getMode() == GameMode.EXPLORATION) {
+            if(this.game.checkAndMove(0, 1) == SpaceType.ENEMY) {
+                System.out.println("before the supervisor");
+                this.combatSupervisor = this.game.getCombatSupervisor();
+                System.out.println("we got the supervisor");
+            }
        }
     }
 }
