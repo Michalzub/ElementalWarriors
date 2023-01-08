@@ -12,11 +12,13 @@ public class Map {
     private Space[][] spaceGrid;
     private int spaceSideLength;
     private Player player;
+    private int enemyTotal;
 
     public Map(String suborMapa) throws FileNotFoundException {
         //initialise instance variables
+        this.enemyTotal = 0;
         this.txtMapa = new File(suborMapa);
-        Scanner citac = new Scanner(this.txtMapa);
+        Scanner reader = new Scanner(this.txtMapa);
 
         this.spaceSideLength = 10;
 
@@ -25,8 +27,8 @@ public class Map {
             for (int j = 0; j < (this.spaceSideLength); j++) {
                 int pozX = 50 * j;
                 int pozY = 50 * i;
-                int poletype = citac.nextInt();
-                switch (poletype) {
+                int spaceType = reader.nextInt();
+                switch (spaceType) {
                     case 0:
                         this.spaceGrid[i][j] = new Space(pozX, pozY, SpaceType.ROCK);
                         break;
@@ -38,6 +40,7 @@ public class Map {
                         break;
                     case 3:
                         this.spaceGrid[i][j] = new Space(pozX, pozY, SpaceType.ENEMY);
+                        this.enemyTotal += 1;
                         break;
                     default:
                         System.out.println("checkni cisla v mape");
@@ -45,7 +48,7 @@ public class Map {
                 }
             }
         }
-        citac.close();
+        reader.close();
     }
     
     public void hideMap() {
@@ -73,5 +76,9 @@ public class Map {
 
     public Space[][] getSpaceGrid() {
         return this.spaceGrid;
+    }
+    
+    public int getEnemyTotal() {
+        return this.enemyTotal;
     }
 }

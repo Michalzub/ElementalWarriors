@@ -17,6 +17,7 @@ public class Game {
     private String filePath;
     private MenuNavigator menuNavigator;
     private CombatSupervisor combatSupervisor;
+    private int enemyTotal;
     
     /**
      * Konštruktor dostane miesto úložiska, podľa ktorého vybere súbor z kadiaľ má brať dáta.
@@ -27,6 +28,7 @@ public class Game {
         this.map = new Map(this.filePath + "mapa.txt");
         this.player = new Player(this.filePath + "playerData.txt");
         this.menuNavigator = menuNavigator;
+        this.enemyTotal = this.map.getEnemyTotal();
     }
     
     public void changeMode() throws InterruptedException {
@@ -37,9 +39,14 @@ public class Game {
             Random r = new Random();
             int randomNumber = r.nextInt(EnemyGroups.values().length);
             EnemyParty tempEnemyParty = new EnemyParty(EnemyGroups.values()[randomNumber]);
-            this.combatSupervisor = new CombatSupervisor(this.player, tempEnemyParty, this.menuNavigator);
+            this.combatSupervisor = new CombatSupervisor(this, this.player, tempEnemyParty, this.menuNavigator);
         } else if (this.mode == GameMode.COMBAT) {
+            this.enemyTotal -= 1;
+            if(this.enemyTotal <= 0) {
+                System.exit(0);
+            }
             this.mode = GameMode.EXPLORATION;
+            this.menuNavigator.setMenuType(MenuType.NOMENU);
             this.map.showMap();
             this.player.showPlayer();
         }

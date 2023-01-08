@@ -72,7 +72,7 @@ public class PlayerControls {
                     this.player = this.game.getPlayer();
                     break;
                 case EXITGAME:
-                    this.game.saveGame();
+                    //this.game.saveGame();
                     System.exit(0);
                     break;
                 case ATTACK:

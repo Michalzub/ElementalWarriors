@@ -9,6 +9,7 @@ import java.lang.InterruptedException;
  */
 public class CombatSupervisor {
     private MenuNavigator menuNavigator;
+    private Game game;
     private EnemyParty enemyParty;
     private Player player;
     private ArrayList<EnemyCharacter> enemyCombattants;
@@ -18,8 +19,9 @@ public class CombatSupervisor {
     private int playerCount;
     private int enemyCount;
     private boolean turnInProgress;
-    public CombatSupervisor(Player player, EnemyParty enemyParty, MenuNavigator menuNavigator) throws InterruptedException{
+    public CombatSupervisor(Game game, Player player, EnemyParty enemyParty, MenuNavigator menuNavigator) throws InterruptedException{
         this.menuNavigator = menuNavigator;
+        this.game = game;
         this.menuNavigator.hideSelectedObject();
         this.playerCount = 0;
         this.enemyCount = 0;
@@ -40,11 +42,12 @@ public class CombatSupervisor {
             this.enemyCount += 1;
         }
         this.rollInitiative();
+        this.game.changeMode();
     }
     
     public void rollInitiative() throws InterruptedException{
         System.out.println("We got to roll initiative");
-        while(this.playerCount > 0 || this.enemyCount > 0){
+        while(this.playerCount > 0 && this.enemyCount > 0){
             System.out.println("we are in the while loop!");
             for(CharacterTurn character : this.allCombattants) {
                 if(character.addDistance() ) {
@@ -92,12 +95,12 @@ public class CombatSupervisor {
     }
     
     public void playerTurn(PlayerCharacter character) throws InterruptedException{
-        this.menuNavigator.setMenuType(MenuType.COMBATMENU);
+        //this.menuNavigator.setMenuType(MenuType.COMBATMENU);
         this.turnInProgress = true;
-        
+        this.enemyCount -= 1;
     }
     
-    public void enemyTurn(EnemyCharacter character) throws InterruptedException{
+    public void enemyTurn(EnemyCharacter character){
         System.out.println("test");
     }
     
