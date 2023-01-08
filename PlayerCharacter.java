@@ -39,4 +39,7 @@ public class PlayerCharacter {
     public double getPlayerMana() {
         return this.mana;
     }
+    public double getPlayerSpeed() {
+        return this.speed;
+    }
 }

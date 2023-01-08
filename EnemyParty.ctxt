@@ -3,4 +3,6 @@ comment0.target=EnemyParty
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ EnemyParty\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=enemyGroup
 comment1.target=EnemyParty(EnemyGroups)
-numComments=2
+comment2.params=
+comment2.target=java.util.ArrayList\ getEnemyParty()
+numComments=3

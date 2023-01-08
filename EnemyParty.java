@@ -40,4 +40,8 @@ public class EnemyParty {
             }
         }
     }
+    
+    public ArrayList<EnemyCharacter> getEnemyParty() {
+        return this.enemyParty;
+    }
 }

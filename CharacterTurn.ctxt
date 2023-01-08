@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=CharacterTurn
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ CharacterTurn\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=playerCharacter\ enemyCharacter
+comment1.target=CharacterTurn(PlayerCharacter,\ EnemyCharacter)
+comment2.params=
+comment2.target=boolean\ isPlayerCharacter()
+comment3.params=
+comment3.target=boolean\ addDistance()
+comment4.params=
+comment4.target=boolean\ isReady()
+comment5.params=
+comment5.target=double\ getDistance()
+numComments=6
