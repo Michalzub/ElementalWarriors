@@ -10,72 +10,72 @@ public enum MenuObject {
     /**
      * tlacitko nacitat hru
      */
-    LOADGAME("loadGameUnselected.png","loadGameSelected.png",250,220),
+    LOADGAME("loadGameUnselected.png", "loadGameSelected.png", 250, 220),
     
     /**
      * tlacitko nova hra
      */
-    NEWGAME("newGameUnselected.png","newGameSelected.png",250,280),
+    NEWGAME("newGameUnselected.png", "newGameSelected.png", 250, 280),
     
     /**
      * tlacitko vypnut hru
      */
-    EXITGAME("exitGameUnselected.png","exitGameSelected.png",250,340),
+    EXITGAME("exitGameUnselected.png", "exitGameSelected.png", 250, 340),
     
     /**
      * tlacitko utok
      */
-    ATTACK("attackUnselected.png","attackSelected.png",410,90),
+    ATTACK("attackUnselected.png", "attackSelected.png", 410, 90),
     
     /**
      * tlacitko obrana
      */
-    GUARD("guardUnselected.png","guardSelected.png",410,140),
+    GUARD("guardUnselected.png", "guardSelected.png", 410, 140),
     
     /**
      * tlacitko elemental hit
      */
-    ELEMENTALHIT("elementalHitUnselected.png","elementalHitSelected.png",410,190),
+    ELEMENTALHIT("elementalHitUnselected.png", "elementalHitSelected.png", 410, 190),
     
     /**
      * tlacitko items
      */
-    ITEMS("itemsUnselected.png","itemsSelected.png",410,290),
+    ITEMS("itemsUnselected.png", "itemsSelected.png", 410, 290),
     
     /**
      * tlacitko maly health potion
      */
-    SMALLHP("smallHPUnselected.png","smallHPSelected.png",410,90),
+    SMALLHP("smallHPUnselected.png", "smallHPSelected.png", 410, 90),
     
     /**
      * tlacitko velky health potion
      */
-    LARGEHP("largeHPUnselected.png","largeHPSelected.png",410,140),
+    LARGEHP("largeHPUnselected.png", "largeHPSelected.png", 410, 140),
     
     /**
      * tlacitko maly mana potion
      */
-    SMALLMP("smallMPUnselected.png","smallMPSelected.png",410,190),
+    SMALLMP("smallMPUnselected.png", "smallMPSelected.png", 410, 190),
     
     /**
      * tlacitko velky mana potion
      */
-    LARGEMP("largeMPUnselected.png","largeMPSelected.png",410,240),
+    LARGEMP("largeMPUnselected.png", "largeMPSelected.png", 410, 240),
     
     /**
      * tlacitko pokracovat
      */
-    CONTINUE("continueUnselected.png","continueSelected.png",250,220),
+    CONTINUE("continueUnselected.png", "continueSelected.png", 250, 220),
     
     /**
      * tlacitko ulozit hru
      */
-    SAVEGAME("saveGameUnselected.png","saveGameSelected.png",250,280),
+    SAVEGAME("saveGameUnselected.png", "saveGameSelected.png", 250, 280),
     
     /**
      * tlacitko naspat do menu
      */
-    BACKTOMAINMENU("backToMainMenuUnselected.png","backToMainMenuSelected.png",250,340);
+    BACKTOMAINMENU("backToMainMenuUnselected.png", "backToMainMenuSelected.png", 250, 340);
     
     private Obrazok unselectedPicture;
     private Obrazok selectedPicture;

@@ -24,8 +24,8 @@ public class Menu {
     * ak už menu predtým existovalo vymení jeho tlačítkove objekty
     */
     public void menuBuild() {
-        if(this.menuType != MenuType.NOMENU) {
-            switch(this.menuType) {
+        if (this.menuType != MenuType.NOMENU) {
+            switch (this.menuType) {
                 case MAINMENU:
                     this.menuObjectList.clear();
                     this.menuObjectList.add(MenuObject.LOADGAME);
@@ -54,7 +54,7 @@ public class Menu {
                     break;
             }
             this.menuType.getMenuBackground().zobraz();
-            for(MenuObject object : this.menuObjectList) {
+            for (MenuObject object : this.menuObjectList) {
                 object.getUnselectedPicture().zobraz();
             }
         }
@@ -65,9 +65,9 @@ public class Menu {
     * Skryje menu
     */
     public void menuHide() {
-        if(this.menuType != MenuType.NOMENU) {
+        if (this.menuType != MenuType.NOMENU) {
             this.menuType.getMenuBackground().skry();
-            for(MenuObject object : this.menuObjectList) {
+            for (MenuObject object : this.menuObjectList) {
                 object.getUnselectedPicture().skry();
                 object.getSelectedPicture().skry();
             }

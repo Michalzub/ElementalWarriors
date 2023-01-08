@@ -25,7 +25,7 @@ public enum TargetingMode {
     private int posY;
     
     TargetingMode(String pictureFilePath, int posY) {
-        if(!pictureFilePath.equals("none")){
+        if (!pictureFilePath.equals("none")) {
             this.picture = new Obrazok(pictureFilePath);
         }
         this.posY = posY;

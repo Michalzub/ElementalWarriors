@@ -22,7 +22,7 @@ public class PlayerCharacter {
      * pouzije utok na target a ak nepriatel zomrie vrati true
      * @return boolean true ak targetu padnu zivoty pod 1 a false naopak
      */
-    public boolean attack(EnemyCharacter target){
+    public boolean attack(EnemyCharacter target) {
         return target.takeDamage(this.damage);
     }
     
@@ -30,8 +30,8 @@ public class PlayerCharacter {
      * pouzije elementany utok na target, vypocita jeho damage a ak nepriatel zomrie vrati true
      * @return boolean true ak targetu padnu zivoty pod 1 a false naopak
      */
-    public boolean elementalHit(EnemyCharacter target){
-        Double elementalDamage = element.calculate(this.damage, target.getEnemyElement());
+    public boolean elementalHit(EnemyCharacter target) {
+        Double elementalDamage = this.element.calculate(this.damage, target.getEnemyElement());
         return target.takeDamage(this.damage);
     }
     
@@ -39,9 +39,9 @@ public class PlayerCharacter {
      * odpocita postave zivoty, ak jej padnu pod 1 nastavi ich na 1 a vrati true
      * @return boolean true ak postave padnu zivoty pod 1 a false naopak
      */
-    public boolean takeDamage(double damage){
+    public boolean takeDamage(double damage) {
         this.health -= damage;
-        if(this.health <= 0) {
+        if (this.health <= 0) {
             this.health = 1;
             return true;
         } else {

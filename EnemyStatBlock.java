@@ -37,12 +37,12 @@ public enum EnemyStatBlock {
     private double speed;
     private String pictureFilePath;
     
-    EnemyStatBlock(double health, double mana,double damage, double speed, String pictureFilePath) {
+    EnemyStatBlock(double health, double mana, double damage, double speed, String pictureFilePath) {
         this.health = health;
         this.mana = mana;
         this.damage = damage;
         this.speed = speed;
-        if(!pictureFilePath.equals("none")){
+        if (!pictureFilePath.equals("none")) {
             this.pictureFilePath = pictureFilePath;
         }
     }

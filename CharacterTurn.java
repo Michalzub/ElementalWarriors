@@ -25,7 +25,7 @@ public class CharacterTurn {
         this.enemyCharacter = enemyCharacter;
         this.isPlayerCharacter = isPlayerCharacter;
         this.distance = 0;
-        if(isPlayerCharacter()) {
+        if (this.isPlayerCharacter()) {
             this.speed = this.playerCharacter.getPlayerSpeed();
         } else {
             this.speed = this.enemyCharacter.getEnemySpeed();
@@ -54,7 +54,7 @@ public class CharacterTurn {
      * @return boolean
      */
     public boolean isReady() {
-        if(this.distance >= 100) {
+        if (this.distance >= 100) {
             this.distance -= 100;
             return true;
         } else {
@@ -66,7 +66,7 @@ public class CharacterTurn {
      * skryje postavu
      */
     public void hideCharacter() {
-        if(isPlayerCharacter()) {
+        if (this.isPlayerCharacter()) {
             this.getPlayerCharacter().getPicture().skry();
         } else {
             this.getEnemyCharacter().getPicture().skry();

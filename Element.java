@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 /**
  * Enum element uschováva multipliere(nasobky) statov, obrazok a postavenie voči ostatným elementom
  * 
@@ -9,27 +8,27 @@ public enum Element {
     /**
      * element ohen
      */
-    FIRE(0.7,0.9,1.3,1.1,"firedude.png",0.7,0.5,1.3,1),
+    FIRE(0.7, 0.9, 1.3, 1.1, "firedude.png", 0.7, 0.5, 1.3, 1),
     
     /**
      * element voda
      */
-    WATER(0.85,1.3,0.9,1,"waterdude.png",1.3,0.7,0.5,1),
+    WATER(0.85, 1.3, 0.9, 1, "waterdude.png", 1.3, 0.7, 0.5, 1),
     
     /**
      * element zem
      */
-    EARTH(1.5,1,0.5,1,"earthdude.png",1,1.3,0.7,1),
+    EARTH(1.5, 1, 0.5, 1, "earthdude.png", 1, 1.3, 0.7, 1),
     
     /**
      * element vzduch
      */
-    AIR(1,0.9,1,1.6,"airdude.png",1.3,1,1,0.7),
+    AIR(1, 0.9, 1, 1.6, "airdude.png", 1.3, 1, 1, 0.7),
     
     /**
      * ziadny element
      */
-    NONE(1,1,1,1,"none", 1,1,1,1);
+    NONE(1, 1, 1, 1, "none", 1, 1, 1, 1);
     
     private double healthMultiplier;
     private double manaMultiplier;
@@ -50,7 +49,7 @@ public enum Element {
         this.waterMatchup = waterMatchup;
         this.earthMatchup = earthMatchup;
         this.airMatchup = airMatchup;
-        if(!pictureFilePath.equals("none")){
+        if (!pictureFilePath.equals("none")) {
             this.picture = new Obrazok("files/obrazky/" + pictureFilePath);
         }
     }
@@ -60,7 +59,7 @@ public enum Element {
      * @return double damage
      */
     public double calculate(Double damage, Element targetElement) {
-        switch(targetElement) {
+        switch (targetElement) {
             case FIRE:
                 return damage * fireMatchup;
             case WATER:

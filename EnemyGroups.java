@@ -9,28 +9,28 @@ public enum EnemyGroups {
     /**
      * skupina 3 potkanov
      */
-    RATS(3,0,0,0),
+    RATS(3, 0, 0, 0),
     
     /**
      * skupina 2 banditov
      */
-    SCOUTS(0,0,2,0),
+    SCOUTS(0, 0, 2, 0),
     
     /**
      * skupina 2 banditov a 2 vlkov
      */
-    BANDITCAMP(0,2,2,0),
+    BANDITCAMP(0, 2, 2, 0),
     
     /**
      * jeden bandit boss
      */
-    BANDITLEADER(0,0,0,1);
+    BANDITLEADER(0, 0, 0, 1);
     
     private int ratCount;
     private int wolfCount;
     private int banditCount;
     private int banditBossCount;
-    EnemyGroups(int ratCount, int wolfCountmy2, int banditCount, int banditBossCount){
+    EnemyGroups(int ratCount, int wolfCountmy2, int banditCount, int banditBossCount) {
         this.ratCount = ratCount;
         this.wolfCount = wolfCount;
         this.banditCount = banditCount;

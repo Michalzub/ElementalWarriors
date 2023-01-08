@@ -26,7 +26,7 @@ public class EnemyCharacter {
      * pouzije utok na target a ak nepriatel zomrie vrati true
      * @return boolean true ak targetu padnu zivoty pod 1 a false naopak
      */
-    public void attack(PlayerCharacter target){
+    public void attack(PlayerCharacter target) {
         target.takeDamage(this.damage);
     }
     
@@ -34,18 +34,17 @@ public class EnemyCharacter {
      * pouzije elementany utok na target, vypocita jeho damage a ak nepriatel zomrie vrati true
      * @return boolean true ak targetu padnu zivoty pod 1 a false naopak
      */
-    public boolean elementalHit(PlayerCharacter target){
-        Double elementalDamage = element.calculate(this.damage, target.getElement());
+    public boolean elementalHit(PlayerCharacter target) {
+        Double elementalDamage = this.element.calculate(this.damage, target.getElement());
         return target.takeDamage(this.damage);
     }
     
-    public boolean takeDamage(double damage){
+    public boolean takeDamage(double damage) {
         this.health -= damage;
-        if(this.health <= 0) {
+        if (this.health <= 0) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
     
     /**

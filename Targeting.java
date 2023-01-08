@@ -26,8 +26,8 @@ public class Targeting {
         this.playerCharacters = new ArrayList<CharacterTurn>();
         this.enemyCharacters = new ArrayList<CharacterTurn>();
         this.allCombattants = allCombattants;
-        for(CharacterTurn character : this.allCombattants) {
-            if(character.isPlayerCharacter()) {
+        for (CharacterTurn character : this.allCombattants) {
+            if (character.isPlayerCharacter()) {
                 this.playerCharacters.add(character);
             } else {
                 this.enemyCharacters.add(character);
@@ -43,7 +43,7 @@ public class Targeting {
      */
     public void initialTargetSelect() {
         this.objectSelector = 0;
-        switch(this.mode) {
+        switch (this.mode) {
             case ALLYTARGETING:
                 this.allyTarget = this.playerCharacters.get(this.objectSelector);
                 this.mode.getPicture().zmenPolohu(50 + 100 * this.objectSelector, this.mode.getPosY());
@@ -64,13 +64,13 @@ public class Targeting {
      * podla vlozeneho smeru cykluje cez mozne targety a zobrazi jeho oznacenie
      * @param direction smer do ktoreho chceme ist bud 1 alebo -1
      */
-    public void changeTarget(int direction){
+    public void changeTarget(int direction) {
         this.objectSelector += direction;
-        switch(this.mode) {
+        switch (this.mode) {
             case ALLYTARGETING:
-                if(this.objectSelector < 0) {
+                if (this.objectSelector < 0) {
                     this.objectSelector = this.playerCharacters.size() - 1;
-                } else if(this.objectSelector >= this.playerCharacters.size()) {
+                } else if (this.objectSelector >= this.playerCharacters.size()) {
                     this.objectSelector = 0;
                 }
                 this.allyTarget = this.playerCharacters.get(this.objectSelector);
@@ -78,9 +78,9 @@ public class Targeting {
                 this.mode.getPicture().zobraz();
                 break;
             case ENEMYTARGETING:
-                if(this.objectSelector < 0) {
+                if (this.objectSelector < 0) {
                     this.objectSelector = this.enemyCharacters.size() - 1;
-                } else if(this.objectSelector >= this.enemyCharacters.size()) {
+                } else if (this.objectSelector >= this.enemyCharacters.size()) {
                     this.objectSelector = 0;
                 }
                 this.enemyTarget = this.enemyCharacters.get(this.objectSelector);

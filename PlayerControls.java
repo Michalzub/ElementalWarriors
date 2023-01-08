@@ -2,7 +2,6 @@ import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;
 import java.io.IOException;  // Import this class to handle errors
 import java.util.Scanner;
-import java.lang.InterruptedException;
 /**
  * Manažuje ovládanie hráča vytvára hru,
  * @param menuNavigator menuNavigator aby hrac mohol pouzivat menu
@@ -30,14 +29,14 @@ public class PlayerControls {
     * Ak je v targeting mode vrati sa z neho von.
     * Dokáže otvorit pause menu a vratit sa z items naspat do combat menu
     */
-    public void xKey(){
+    public void xKey() {
         this.menuNavigator.getSelectedMenuObject().getUnselectedPicture().skry();
         if (this.targetingMode != TargetingMode.NOTTARGETING) { // ak je v targeting mode zruši targeting
             this.targeting.hideTargeting();
             this.targetingMode = TargetingMode.NOTTARGETING;
             this.targeting.setTargettingMode(this.targetingMode);
         } else {
-            switch(this.menuNavigator.getMenuType()){ 
+            switch (this.menuNavigator.getMenuType()) { 
                 case NOMENU:
                     this.menuNavigator.setMenuType(MenuType.PAUSEMENU);
                     break;
@@ -68,10 +67,10 @@ public class PlayerControls {
             this.combatSupervisor.action(this.targeting.getAllyTarget(), this.targeting.getEnemyTarget(), this.selectedMove, this.targetingMode);
             
             this.targetingMode = TargetingMode.NOTTARGETING;
-        }else if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
-            switch(this.menuNavigator.getSelectedMenuObject()) {
+        } else if (this.menuNavigator.getMenuType() != MenuType.NOMENU) {
+            switch (this.menuNavigator.getSelectedMenuObject()) {
                 case LOADGAME:
-                    if(this.game != null){
+                    if (this.game != null) {
                         this.game.hideRemnants();
                     }
                     this.menuNavigator.hideSelectedObject();
@@ -83,7 +82,7 @@ public class PlayerControls {
                     if (citacMapa.hasNext() && citacPlayer.hasNext()) {
                         this.game = new Game("files/saves/", this.menuNavigator);
                         return;
-                    } else{
+                    } else {
                         System.out.println("FILE NOT FOUND");
                     }
                     citacMapa.close();
@@ -91,7 +90,7 @@ public class PlayerControls {
                     this.player = this.game.getPlayer();
                     break;  
                 case NEWGAME:
-                    if(this.game != null){
+                    if (this.game != null) {
                         this.game.hideRemnants();
                     }
                     this.menuNavigator.hideSelectedObject();
@@ -167,10 +166,10 @@ public class PlayerControls {
      * v combate posúva cez mozne targety alebo v exploration posúva postavu
      */
     public void leftArrow() {
-        if(this.targetingMode != TargetingMode.NOTTARGETING){
+        if (this.targetingMode != TargetingMode.NOTTARGETING) {
             this.targeting.changeTarget(-1);
-        } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            if(this.game.checkAndMove(-1, 0) == SpaceType.ENEMY) {
+        } else if (this.game.getMode() == GameMode.EXPLORATION) {
+            if (this.game.checkAndMove(-1, 0) == SpaceType.ENEMY) {
                 this.combatSupervisor = this.game.getCombatSupervisor();
             }
         }
@@ -181,12 +180,12 @@ public class PlayerControls {
      * naviguje menu alebo v exploration posúva postavu
      */
     public void upArrow() {
-        if(this.targetingMode != TargetingMode.NOTTARGETING){
+        if (this.targetingMode != TargetingMode.NOTTARGETING) {
             return;
-        } else if(this.menuNavigator.getMenuType() != MenuType.NOMENU) {
+        } else if (this.menuNavigator.getMenuType() != MenuType.NOMENU) {
             this.menuNavigator.changeSelectedMenuObject(-1);
-        } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            if(this.game.checkAndMove(0, -1) == SpaceType.ENEMY) {
+        } else if (this.game.getMode() == GameMode.EXPLORATION) {
+            if (this.game.checkAndMove(0, -1) == SpaceType.ENEMY) {
                 this.combatSupervisor = this.game.getCombatSupervisor();
             }
         }
@@ -198,10 +197,10 @@ public class PlayerControls {
      * v combate posúva cez mozne targety alebo v exploration posúva postavu
      */
     public void rightArrow() {
-        if(this.targetingMode != TargetingMode.NOTTARGETING){
+        if (this.targetingMode != TargetingMode.NOTTARGETING) {
             this.targeting.changeTarget(1);
-        } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            if(this.game.checkAndMove(1, 0) == SpaceType.ENEMY) {
+        } else if (this.game.getMode() == GameMode.EXPLORATION) {
+            if (this.game.checkAndMove(1, 0) == SpaceType.ENEMY) {
                 this.combatSupervisor = this.game.getCombatSupervisor();
             }
         }
@@ -213,14 +212,14 @@ public class PlayerControls {
      * naviguje menu alebo v exploration posúva postavu
      */
     public void downArrow() {
-        if(this.targetingMode != TargetingMode.NOTTARGETING){
+        if (this.targetingMode != TargetingMode.NOTTARGETING) {
             return;
-        } else if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
+        } else if (this.menuNavigator.getMenuType() != MenuType.NOMENU) {
             this.menuNavigator.changeSelectedMenuObject(1);
-        } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            if(this.game.checkAndMove(0, 1) == SpaceType.ENEMY) {;
+        } else if (this.game.getMode() == GameMode.EXPLORATION) {
+            if (this.game.checkAndMove(0, 1) == SpaceType.ENEMY) {
                 this.combatSupervisor = this.game.getCombatSupervisor();
             }
-       }
+        }
     }
 }

@@ -51,9 +51,9 @@ public class MenuNavigator {
         this.selectedMenuObject.getUnselectedPicture().zobraz();
         this.selectedMenuObject.getSelectedPicture().skry();
         this.objectSelector += direction;
-        if(this.objectSelector < 0) {
+        if (this.objectSelector < 0) {
             this.objectSelector = this.menuObjectList.size() - 1;
-        } else if(this.objectSelector >= this.menuObjectList.size()) {
+        } else if (this.objectSelector >= this.menuObjectList.size()) {
             this.objectSelector = 0;
         }
         this.selectedMenuObject = this.menuObjectList.get(this.objectSelector);
@@ -64,7 +64,7 @@ public class MenuNavigator {
     * nastaví typ menu
     * @param menuType pozadovany MenuType
     */
-    public void setMenuType(MenuType menuType){
+    public void setMenuType(MenuType menuType) {
         this.selectedMenuObject.getSelectedPicture().skry();
         this.menu.menuHide();
         this.menu.setMenuType(menuType);
@@ -76,7 +76,7 @@ public class MenuNavigator {
     * nastaví počiatočný objekte podla typu menu
     */
     public void setSelectedObject(MenuType menuType) {
-        switch(menuType) {
+        switch (menuType) {
             case MAINMENU:
                 this.selectedMenuObject = MenuObject.LOADGAME;
                 break;
@@ -96,7 +96,7 @@ public class MenuNavigator {
      * vrati typ menu ktore ovlada
      * @return MenuType
      */
-    public MenuType getMenuType(){
+    public MenuType getMenuType() {
         return this.menu.getMenuType();
     }
     

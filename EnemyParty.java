@@ -19,26 +19,26 @@ public class EnemyParty {
         this.enemyGroup = enemyGroup;
         this.enemyParty = new ArrayList<EnemyCharacter>();
         
-        for(EnemyStatBlock enemy : EnemyStatBlock.values()) {
-            switch(enemy){
+        for (EnemyStatBlock enemy : EnemyStatBlock.values()) {
+            switch (enemy) {
                 case RAT:
-                    for(int i = 0; i < this.enemyGroup.getRatCount(); i++){
-                        this.enemyParty.add(new EnemyCharacter(enemy,Element.NONE));
+                    for (int i = 0; i < this.enemyGroup.getRatCount(); i++) {
+                        this.enemyParty.add(new EnemyCharacter(enemy, Element.NONE));
                     }
                     break;
                 case WOLF:
-                    for(int i = 0; i < this.enemyGroup.getWolfCount(); i++){
-                        this.enemyParty.add(new EnemyCharacter(enemy,Element.NONE));
+                    for ( int i = 0; i < this.enemyGroup.getWolfCount(); i++) {
+                        this.enemyParty.add(new EnemyCharacter(enemy, Element.NONE));
                     }
                     break;
                 case BANDIT:
-                    for(int i = 0; i < this.enemyGroup.getBanditCount(); i++){
-                        this.enemyParty.add(new EnemyCharacter(enemy,Element.NONE));
+                    for (int i = 0; i < this.enemyGroup.getBanditCount(); i++) {
+                        this.enemyParty.add(new EnemyCharacter(enemy, Element.NONE));
                     }
                     break;
                 case BANDITBOSS:
-                    for(int i = 0; i < this.enemyGroup.getBanditBossCount(); i++){
-                        this.enemyParty.add(new EnemyCharacter(enemy,Element.NONE));
+                    for (int i = 0; i < this.enemyGroup.getBanditBossCount(); i++) {
+                        this.enemyParty.add(new EnemyCharacter(enemy, Element.NONE));
                     }
                     break;
             }

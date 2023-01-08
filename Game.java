@@ -2,7 +2,6 @@ import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Random;
-import java.lang.InterruptedException;
 
 /**
  * Vytvorí mapu, hráča a manažera, ktorý ich bude spravovať.
@@ -58,7 +57,7 @@ public class Game {
             
         } else if (this.mode == GameMode.COMBAT) {
             this.enemyTotal -= 1;
-            if(this.enemyTotal <= 0) {
+            if (this.enemyTotal <= 0) {
                 System.exit(0);
             }
             this.mode = GameMode.EXPLORATION;

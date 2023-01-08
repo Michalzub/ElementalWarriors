@@ -14,8 +14,8 @@ public class Player {
     private int posY;
 
     private ArrayList<Item> itemList;
-    PlayerCharacter[] playerParty;
-    PlayerCharacter[] combattants;
+    private PlayerCharacter[] playerParty;
+    private PlayerCharacter[] combattants;
 
     private Obrazok playerPicture;
 
@@ -37,7 +37,7 @@ public class Player {
         while (reader.hasNextLine()) {
             Item item = new Item();
             String nextLine = reader.nextLine();
-            if(nextLine.equals("-")) {
+            if (nextLine.equals("-")) {
                 break;
             } else {
                 item.setTyp(nextLine);
@@ -47,15 +47,15 @@ public class Player {
         
         this.playerParty = new PlayerCharacter[4];
         this.combattants = new PlayerCharacter[2];
-        for(Element element : Element.values()) {
+        for (Element element : Element.values()) {
             if (element != Element.NONE) {
                 this.playerParty[element.ordinal()] = new PlayerCharacter(element);
             }
         }
         this.combattants[0] = this.playerParty[0];
         this.combattants[1] = this.playerParty[1];
-        if(file.equals("files/saves/playerData.txt")) {
-            for(int i = 0; i < this.playerParty.length; i++) {
+        if (file.equals("files/saves/playerData.txt")) {
+            for (int i = 0; i < this.playerParty.length; i++) {
                 this.playerParty[i].setPlayerHealth(reader.nextInt());
                 this.playerParty[i].setPlayerMana(reader.nextInt());
             }

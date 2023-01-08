@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.lang.InterruptedException;
-
 /**
  * Trieda CombatSupervisor sa stará o všetko čo sa deje v combate
  * 
@@ -44,14 +42,14 @@ public class CombatSupervisor {
         this.turnReadyCharacters = new ArrayList<CharacterTurn>();
         
         
-        for(PlayerCharacter character : this.playerCombattants) {
+        for (PlayerCharacter character : this.playerCombattants) {
             character.getPicture().zmenPolohu(50 + 100 * this.playerCount, 300);
             character.getPicture().zobraz();
             CharacterTurn tempCharTurn = new CharacterTurn(character, null, true);
             this.allCombattants.add(tempCharTurn);
             this.playerCount += 1;
         }
-        for(EnemyCharacter character : this.enemyCombattants) {
+        for (EnemyCharacter character : this.enemyCombattants) {
             character.getPicture().zmenPolohu(50 + 100 * this.enemyCount, 100);
             character.getPicture().zobraz();
             CharacterTurn tempCharTurn = new CharacterTurn(null, character, false);
@@ -70,8 +68,8 @@ public class CombatSupervisor {
         System.out.println("the player character count is " + this.playerCount);
         System.out.println("the enemy character count is " + this.enemyCount);
         System.out.println(this.turnReadyCharacters.isEmpty());
-        if(this.playerCount > 0 && this.enemyCount > 0) {
-            if(this.turnReadyCharacters.isEmpty()) {
+        if (this.playerCount > 0 && this.enemyCount > 0) {
+            if (this.turnReadyCharacters.isEmpty()) {
                 System.out.println("we are about to roll initiative");
                 this.rollInitiative();
             } else {
@@ -79,7 +77,7 @@ public class CombatSupervisor {
                 this.turnTime();
             }
         } else {
-            
+            return; //ukonci combat
         }
     }
     
@@ -88,9 +86,9 @@ public class CombatSupervisor {
      * ak náhodou viac hráčou sa dostalo do listu pripravených zavolá metódu getSortedList na určenie ich poradia
      */
     public void rollInitiative() {
-        while(this.turnReadyCharacters.isEmpty()){
-            for(CharacterTurn character : this.allCombattants) {
-                if(character.addDistance() ) {
+        while (this.turnReadyCharacters.isEmpty()) {
+            for (CharacterTurn character : this.allCombattants) {
+                if (character.addDistance() ) {
                     this.turnReadyCharacters.add(character);
                 }
             }
@@ -104,7 +102,7 @@ public class CombatSupervisor {
      */
     public void turnTime() {
         CharacterTurn tempCharacterTurn = this.turnReadyCharacters.remove(0);
-        if(tempCharacterTurn.isPlayerCharacter()){
+        if (tempCharacterTurn.isPlayerCharacter()) {
             this.playerTurn(tempCharacterTurn);
         } else {
             this.enemyTurn(tempCharacterTurn);
@@ -119,17 +117,17 @@ public class CombatSupervisor {
     public ArrayList<CharacterTurn> getSortedList(ArrayList<CharacterTurn> unsortedList) {
         ArrayList<Double> distanceOverList = new ArrayList<Double>();
         ArrayList<CharacterTurn> sortedCharacterList = new ArrayList<CharacterTurn>();
-        for(CharacterTurn character : unsortedList){
-            if(distanceOverList.isEmpty()) {
+        for (CharacterTurn character : unsortedList) {
+            if (distanceOverList.isEmpty()) {
                 distanceOverList.add(character.getDistance());
                 sortedCharacterList.add(character);
             } else {
-                for(int i = 0; i < distanceOverList.size(); i++) {
-                    if (character.getDistance() >= distanceOverList.get(i)){
+                for (int i = 0; i < distanceOverList.size(); i++) {
+                    if (character.getDistance() >= distanceOverList.get(i)) {
                         distanceOverList.add(i, character.getDistance());
                         sortedCharacterList.add(i, character);
                         break;
-                    } else if(character.getDistance() < distanceOverList.get(i) && i == distanceOverList.size() - 1) {
+                    } else if (character.getDistance() < distanceOverList.get(i) && i == distanceOverList.size() - 1) {
                         distanceOverList.add(character.getDistance());
                         sortedCharacterList.add(character);
                     }
@@ -160,7 +158,7 @@ public class CombatSupervisor {
     /**
      * Nepriateľov ťah nepriateľov AI rozhodne čo sa stane a zavolá dalšie kolo
      */
-    public void enemyTurn(CharacterTurn character){
+    public void enemyTurn(CharacterTurn character) {
         System.out.println("Enemy turn in progress");
         this.roundStart();
     }
@@ -187,16 +185,16 @@ public class CombatSupervisor {
         PlayerCharacter tempAllyTarget = allyTarget.getPlayerCharacter();
         EnemyCharacter tempEnemyTarget = enemyTarget.getEnemyCharacter();
         TargetingMode targetMode = targetingMode;
-        switch(tempSelectedMove) {
+        switch (tempSelectedMove) {
             case "attack":
                 System.out.println("we got into attack switch");
-                if(tempSelectedCharacter.attack(tempEnemyTarget)) {
+                if (tempSelectedCharacter.attack(tempEnemyTarget)) {
                     this.removeTarget(enemyTarget);
                 }
                 this.roundStart();
                 break;
             case "elementalhit":
-                if(tempSelectedCharacter.elementalHit(tempEnemyTarget)) {
+                if (tempSelectedCharacter.elementalHit(tempEnemyTarget)) {
                     this.removeTarget(enemyTarget);
                 }
                 this.roundStart();
@@ -232,7 +230,7 @@ public class CombatSupervisor {
     public void removeTarget(CharacterTurn character) {
         character.hideCharacter();
         this.allCombattants.remove(character);
-        if(character.isPlayerCharacter()) {
+        if (character.isPlayerCharacter()) {
             this.playerCount -= 1;
         } else {
             this.enemyCount -= 1;
