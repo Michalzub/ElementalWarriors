@@ -73,6 +73,10 @@ public class Targeting {
         }
     }
     
+    public void hideTargeting() {
+        this.mode.getPicture().skry();
+    }
+    
     public void setTargettingMode(TargetingMode mode) {
         this.mode = mode;
         this.initialTargetSelect();

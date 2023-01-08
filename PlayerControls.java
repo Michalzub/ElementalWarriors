@@ -25,20 +25,25 @@ public class PlayerControls {
     
     public void xKey(){
         this.menuNavigator.getSelectedMenuObject().getUnselectedPicture().skry();
-        
-        switch(this.menuNavigator.getMenuType()){
-            case NOMENU:
-                this.menuNavigator.setMenuType(MenuType.PAUSEMENU);
-                break;
-            case PAUSEMENU:
-                this.menuNavigator.setMenuType(MenuType.NOMENU);
-                this.menuNavigator.hideSelectedObject();
-                break;
-            case ITEMMENU:
-                this.menuNavigator.setMenuType(MenuType.COMBATMENU);
-                break;
-            default:
-                break;
+        if (this.targetingMode != TargetingMode.NOTTARGETING) {
+            this.targeting.hideTargeting();
+            this.targetingMode = TargetingMode.NOTTARGETING;
+            this.targeting.setTargettingMode(this.targetingMode);
+        } else {
+            switch(this.menuNavigator.getMenuType()){
+                case NOMENU:
+                    this.menuNavigator.setMenuType(MenuType.PAUSEMENU);
+                    break;
+                case PAUSEMENU:
+                    this.menuNavigator.setMenuType(MenuType.NOMENU);
+                    this.menuNavigator.hideSelectedObject();
+                    break;
+                case ITEMMENU:
+                    this.menuNavigator.setMenuType(MenuType.COMBATMENU);
+                    break;
+                default:
+                    break;
+            }
         }
     }
     
@@ -165,7 +170,7 @@ public class PlayerControls {
     
     public void upArrow() {
         if(this.targetingMode != TargetingMode.NOTTARGETING){
-            this.targeting.changeTarget(-1);
+            return;
         } else if(this.menuNavigator.getMenuType() != MenuType.NOMENU) {
             this.menuNavigator.changeSelectedMenuObject(-1);
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
@@ -184,16 +189,14 @@ public class PlayerControls {
             System.out.println("after changing target");
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
             if(this.game.checkAndMove(1, 0) == SpaceType.ENEMY) {
-                System.out.println("before the supervisor");
                 this.combatSupervisor = this.game.getCombatSupervisor();
-                System.out.println("we got the supervisor");
             }
         }
     }
     
     public void downArrow() {
         if(this.targetingMode != TargetingMode.NOTTARGETING){
-            this.targeting.changeTarget(-1);
+            return;
         } else if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             this.menuNavigator.changeSelectedMenuObject(1);
         } else if(this.game.getMode() == GameMode.EXPLORATION) {

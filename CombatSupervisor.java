@@ -29,6 +29,7 @@ public class CombatSupervisor {
         this.enemyParty = enemyParty;
         this.player = player;
         this.playerCombattants = this.player.getCombattants();
+        this.menuNavigator = menuNavigator;
         this.enemyCombattants = this.enemyParty.getEnemyParty();
         this.allCombattants = new ArrayList<CharacterTurn>();
         this.turnReadyCharacters = new ArrayList<CharacterTurn>();
@@ -54,10 +55,13 @@ public class CombatSupervisor {
     public void roundStart()  {
         System.out.println("the player character count is " + this.playerCount);
         System.out.println("the enemy character count is " + this.enemyCount);
+        System.out.println(this.turnReadyCharacters.isEmpty());
         if(this.playerCount > 0 && this.enemyCount > 0) {
             if(this.turnReadyCharacters.isEmpty()) {
+                System.out.println("we are about to roll initiative");
                 this.rollInitiative();
             } else {
+                System.out.println("we are about to turnTime");
                 this.turnTime();
             }
         }
@@ -72,6 +76,7 @@ public class CombatSupervisor {
             }
         }
         this.turnReadyCharacters = this.getSortedList(this.turnReadyCharacters);
+        this.roundStart();
     }
     
     public void turnTime() {
