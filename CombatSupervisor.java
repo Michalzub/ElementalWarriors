@@ -142,7 +142,6 @@ public class CombatSupervisor {
     /**
      * nastaví menu na combat a uloží postavu do vybratej Postavy
      * @param character postava ktorá je na ťahu
-     * 
      */
     public void playerTurn(CharacterTurn character) {
         System.out.println("Players turn in progress");
@@ -150,20 +149,38 @@ public class CombatSupervisor {
         this.selectedCharacter = character;
     }
     
+    /**
+     * vrati vybratu postavu
+     * @return CharacterTurn selectedCharacter
+     */
     public CharacterTurn getSelectedCharacter() {
         return this.selectedCharacter;
     }
     
+    /**
+     * Nepriateľov ťah nepriateľov AI rozhodne čo sa stane a zavolá dalšie kolo
+     */
     public void enemyTurn(CharacterTurn character){
         System.out.println("Enemy turn in progress");
         this.roundStart();
     }
     
+    /**
+     * spustí targetting podla požadovaného módu
+     * @param targetingMode požadovaný mód
+     */
     public void startTargetting(TargetingMode targetingMode) {
-        System.out.println("Did we atleast get inside");
         this.targeting = new Targeting(this.allCombattants, targetingMode);
     }
     
+    /**
+     * action je metóda ktorá sa zavolá pri hráčovom kole podla toho akú možnosť z menu si zvolí
+     * @param allyTarget vybraný priateľský target
+     * @param enemyTarget vybraný nepriateľský target
+     * @param menuObject typ stlačené tlačítko z combat menu
+     * @param targetingMode mód výberu targetu
+     * 
+     */
     public void action(CharacterTurn allyTarget, CharacterTurn enemyTarget, String selectedMove , TargetingMode targetingMode) {
         String tempSelectedMove = selectedMove;
         PlayerCharacter tempSelectedCharacter = this.selectedCharacter.getPlayerCharacter();
@@ -208,6 +225,10 @@ public class CombatSupervisor {
         }
     }
     
+    /**
+     * odstrani target z listu bojovnikov a odpocita pocet bojovnikov jeho typu
+     * @param character CharacterTurn s ktorým budeme pracovať
+     */
     public void removeTarget(CharacterTurn character) {
         character.hideCharacter();
         this.allCombattants.remove(character);
@@ -219,6 +240,10 @@ public class CombatSupervisor {
         
     }
     
+    /**
+     * vráti targeting ako objekt
+     * @return Targeting
+     */
     public Targeting getTargeting() {
         return this.targeting;
     }
