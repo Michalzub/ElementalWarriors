@@ -11,11 +11,12 @@ import java.lang.InterruptedException;
  */
 public class PlayerControls {
     private MenuNavigator menuNavigator;
-    private boolean isTargeting;
     private MenuType menuType;
     private Game game;
     private Player player;
+    private CombatSupervisor combatSupervisor;
     private Targeting targeting;
+    private TargetingMode targetingMode;
     
     public PlayerControls(MenuNavigator menuNavigator) {
         this.menuNavigator = menuNavigator;
@@ -41,7 +42,10 @@ public class PlayerControls {
     }
     
     public void space() throws FileNotFoundException, IOException {
-        if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
+        if (this.targeting != null) {
+            this.combatSupervisor.action(this.targeting.getAllyTarget(),this.targeting.getEnemyTarget(), this.menuNavigator.getSelectedMenuObject(), this.targetingMode);
+            
+        }else if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             switch(this.menuNavigator.getSelectedMenuObject()) {
                 case LOADGAME:
                     if(this.game != null){
@@ -78,8 +82,8 @@ public class PlayerControls {
                     break;
                 case ATTACK:
                     System.out.println("ATTACK PRESSED");
-                    this.isTargeting = true;
-                    this.game.getCombatSupervisor().notifyWaits();
+                    this.combatSupervisor.startTargetting(TargetingMode.ENEMYTARGETING);
+                    this.targetingMode = TargetingMode.ENEMYTARGETING;
                     break;
                 case GUARD:
                     System.out.println("GUARD PRESSED");
@@ -137,10 +141,11 @@ public class PlayerControls {
     }
     
     public void leftArrow() throws InterruptedException{
-        if(isTargeting){
-            
+        if(this.targeting != null){
+            this.targeting.changeTarget(-1);
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
             this.game.checkAndMove(-1, 0);
+            this.combatSupervisor = this.game.getCombatSupervisor();
         }
     }
     
@@ -149,14 +154,16 @@ public class PlayerControls {
             this.menuNavigator.changeSelectedMenuObject(-1);
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
             this.game.checkAndMove(0, -1);
+            this.combatSupervisor = this.game.getCombatSupervisor();
         }
     }
     
     public void rightArrow() throws InterruptedException{
-        if(isTargeting){
-            
+        if(this.targeting != null){
+            this.targeting.changeTarget(1);
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
             this.game.checkAndMove(1, 0);
+            this.combatSupervisor = this.game.getCombatSupervisor();
         }
     }
     
@@ -165,6 +172,7 @@ public class PlayerControls {
             this.menuNavigator.changeSelectedMenuObject(1);
        } else if(this.game.getMode() == GameMode.EXPLORATION) {
             this.game.checkAndMove(0, 1);
+            this.combatSupervisor = this.game.getCombatSupervisor();
        }
     }
 }

@@ -35,8 +35,6 @@ public class CombatSupervisor {
         this.allCombattants = new ArrayList<CharacterTurn>();
         this.turnReadyCharacters = new ArrayList<CharacterTurn>();
         
-        this.targeting = new Targeting(this.enemyCombattants, this.playerCombattants);
-        
         
         for(PlayerCharacter character : this.playerCombattants) {
             character.getPicture().zmenPolohu(50 + 100 * this.playerCount, 300);
@@ -108,6 +106,7 @@ public class CombatSupervisor {
     
     public void playerTurn(PlayerCharacter character) throws InterruptedException{
         this.menuNavigator.setMenuType(MenuType.COMBATMENU);
+        
         this.turnInProgress = true;
         this.enemyCount -= 1;
         wait();
@@ -123,5 +122,13 @@ public class CombatSupervisor {
     
     public void startTargetting(TargetingMode mode) {
         this.targeting = new Targeting(this.enemyCombattants, this.playerCombattants, mode);
+    }
+    
+    public void action(PlayerCharacter allyTarget, EnemyCharacter enemyTarget, MenuObject menuObject, TargetingMode targetingMode) {
+        PlayerCharacter tempAllyTarget = allyTarget;
+        EnemyCharacter tempEnemyTarget = enemyTarget;
+        MenuObject objectType = menuObject;
+        TargetingMode targetMode = targetingMode;
+        //this IS WHERE YOU ENDED
     }
 }
