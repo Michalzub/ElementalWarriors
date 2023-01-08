@@ -54,6 +54,14 @@ public class PlayerControls {
         }
     }
     
+    /**
+    * Akcie ktoré sa vykonajú pri stlačený tlačítka space.
+    * určení na potvrdenie vyberu v menu alebo targetu v combate
+    * pri moznosti loadgame nacita subory a vytvorí hru
+    * pri moznosti newgame nacita subory a vytvorí hru
+    * pri možnosti exitgame vypne hru
+    * bojove moznosti vykonajú respektívne akcie
+    */
     public void space() throws FileNotFoundException, IOException {
         if (this.targetingMode != TargetingMode.NOTTARGETING) {
             System.out.println("before Action");
@@ -114,11 +122,6 @@ public class PlayerControls {
                     
                     this.game.getCombatSupervisor().notify();
                     break;
-                case ELEMENTALEFFECT:
-                    System.out.println("ELEMENTALEFFECT PRESSED");
-                    
-                    this.game.getCombatSupervisor().notify();
-                    break;
                 case ITEMS:
                     System.out.println("ITEMS PRESSED");
                     
@@ -159,6 +162,10 @@ public class PlayerControls {
         }
     }
     
+    /**
+     * Akcie ktoré sa vykonajú pri stlačený tlačítka sipka vlavo
+     * v combate posúva cez mozne targety alebo v exploration posúva postavu
+     */
     public void leftArrow() {
         if(this.targetingMode != TargetingMode.NOTTARGETING){
             this.targeting.changeTarget(-1);
@@ -169,6 +176,10 @@ public class PlayerControls {
         }
     }
     
+    /**
+     * Akcie ktoré sa vykonajú pri stlačený tlačítka sipka nahor
+     * naviguje menu alebo v exploration posúva postavu
+     */
     public void upArrow() {
         if(this.targetingMode != TargetingMode.NOTTARGETING){
             return;
@@ -181,6 +192,11 @@ public class PlayerControls {
         }
     }
     
+    
+    /**
+     * Akcie ktoré sa vykonajú pri stlačený tlačítka sipka vpravo
+     * v combate posúva cez mozne targety alebo v exploration posúva postavu
+     */
     public void rightArrow() {
         if(this.targetingMode != TargetingMode.NOTTARGETING){
             this.targeting.changeTarget(1);
@@ -191,6 +207,11 @@ public class PlayerControls {
         }
     }
     
+    
+    /**
+     * Akcie ktoré sa vykonajú pri stlačený tlačítka sipka nadol
+     * naviguje menu alebo v exploration posúva postavu
+     */
     public void downArrow() {
         if(this.targetingMode != TargetingMode.NOTTARGETING){
             return;

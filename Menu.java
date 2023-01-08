@@ -33,7 +33,6 @@ public class Menu {
                     this.menuObjectList.add(MenuObject.ATTACK);
                     this.menuObjectList.add(MenuObject.GUARD);
                     this.menuObjectList.add(MenuObject.ELEMENTALHIT);
-                    this.menuObjectList.add(MenuObject.ELEMENTALEFFECT);
                     this.menuObjectList.add(MenuObject.ITEMS);
                     break;
                 case ITEMMENU:

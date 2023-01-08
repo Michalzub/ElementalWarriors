@@ -100,27 +100,41 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#downArrow()">downArrow</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Akcie ktoré sa vykonajú pri stlačený tlačítka sipka nadol
+ naviguje menu alebo v exploration posúva postavu</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#leftArrow()">leftArrow</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Akcie ktoré sa vykonajú pri stlačený tlačítka sipka vlavo
+ v combate posúva cez mozne targety alebo v exploration posúva postavu</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rightArrow()">rightArrow</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Akcie ktoré sa vykonajú pri stlačený tlačítka sipka vpravo
+ v combate posúva cez mozne targety alebo v exploration posúva postavu</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#space()">space</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Akcie ktoré sa vykonajú pri stlačený tlačítka space.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#upArrow()">upArrow</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Akcie ktoré sa vykonajú pri stlačený tlačítka sipka nahor
+ naviguje menu alebo v exploration posúva postavu</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -193,6 +207,12 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;space()
            throws java.io.FileNotFoundException,
                   java.io.IOException</pre>
+<div class="block">Akcie ktoré sa vykonajú pri stlačený tlačítka space.
+ určení na potvrdenie vyberu v menu alebo targetu v combate
+ pri moznosti loadgame nacita subory a vytvorí hru
+ pri moznosti newgame nacita subory a vytvorí hru
+ pri možnosti exitgame vypne hru
+ bojove moznosti vykonajú respektívne akcie</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.io.FileNotFoundException</code></dd>
@@ -207,6 +227,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>leftArrow</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;leftArrow()</pre>
+<div class="block">Akcie ktoré sa vykonajú pri stlačený tlačítka sipka vlavo
+ v combate posúva cez mozne targety alebo v exploration posúva postavu</div>
 </li>
 </ul>
 <a id="upArrow()">
@@ -216,6 +238,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>upArrow</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;upArrow()</pre>
+<div class="block">Akcie ktoré sa vykonajú pri stlačený tlačítka sipka nahor
+ naviguje menu alebo v exploration posúva postavu</div>
 </li>
 </ul>
 <a id="rightArrow()">
@@ -225,6 +249,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>rightArrow</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;rightArrow()</pre>
+<div class="block">Akcie ktoré sa vykonajú pri stlačený tlačítka sipka vpravo
+ v combate posúva cez mozne targety alebo v exploration posúva postavu</div>
 </li>
 </ul>
 <a id="downArrow()">
@@ -234,6 +260,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>downArrow</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;downArrow()</pre>
+<div class="block">Akcie ktoré sa vykonajú pri stlačený tlačítka sipka nadol
+ naviguje menu alebo v exploration posúva postavu</div>
 </li>
 </ul>
 </li>

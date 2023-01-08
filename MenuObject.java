@@ -13,7 +13,6 @@ public enum MenuObject {
     ATTACK("attackUnselected.png","attackSelected.png",410,90),
     GUARD("guardUnselected.png","guardSelected.png",410,140),
     ELEMENTALHIT("elementalHitUnselected.png","elementalHitSelected.png",410,190),
-    ELEMENTALEFFECT("elementalEffectUnselected.png","elementalEffectSelected.png",410,240),
     ITEMS("itemsUnselected.png","itemsSelected.png",410,290),
     SMALLHP("smallHPUnselected.png","smallHPSelected.png",410,90),
     LARGEHP("largeHPUnselected.png","largeHPSelected.png",410,140),
