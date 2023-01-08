@@ -18,4 +18,20 @@ public class EnemyCharacter {
         this.mana = this.statBlock.getMana() * this.element.getManaMultiplier();
         this.speed = this.statBlock.getSpeed() * this.element.getSpeedMultiplier();
     }
+    
+    public double getEnemyHealth() {
+        return this.health;
+    }
+    public double getEnemyMana() {
+        return this.mana;
+    }
+    public double getEnemySpeed() {
+        return this.speed;
+    }
+    public Element getEnemyElement() {
+        return this.element;
+    }
+    public EnemyStatBlock getStatBlock() {
+        return this.statBlock;
+    }
 }

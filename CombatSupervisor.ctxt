@@ -11,4 +11,6 @@ comment4.params=character
 comment4.target=void\ playerTurn(PlayerCharacter)
 comment5.params=character
 comment5.target=void\ enemyTurn(EnemyCharacter)
-numComments=6
+comment6.params=
+comment6.target=void\ notifyWaits()
+numComments=7

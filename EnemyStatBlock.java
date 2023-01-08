@@ -6,11 +6,11 @@
  * @version (version number or date here)
  */
 public enum EnemyStatBlock {
-    RAT(20,0,10),
-    BANDIT(70,50,10),
-    WOLF(40,0,12),
-    BANDITBOSS(150,100,10),
-    NONE(0,0,0);
+    RAT(20, 0, 15),
+    BANDIT(50, 50, 13),
+    WOLF(30, 0, 14),
+    BANDITBOSS(150, 100, 11),
+    NONE(0, 0, 0);
     
     private double health;
     private double mana;

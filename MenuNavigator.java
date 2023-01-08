@@ -52,15 +52,11 @@ public class MenuNavigator {
     }
     
     public void setMenuType(MenuType menuType){
-        
-        System.out.println(this.selectedMenuObject);
         this.selectedMenuObject.getSelectedPicture().skry();
-        System.out.println("APPARENTLY IT WAS HIDDEN");
         this.menu.menuHide();
         this.menu.setMenuType(menuType);
         this.initialSelectedObject();
         this.highlightSelectedObject();
-        
     }
     
     public MenuType getMenuType(){

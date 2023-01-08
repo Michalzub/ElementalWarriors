@@ -10,29 +10,35 @@ public class CharacterTurn {
     private EnemyCharacter enemyCharacter;
     private double speed;
     private double distance;
+    private boolean isPlayerCharacter;
     
-    public CharacterTurn(PlayerCharacter playerCharacter, EnemyCharacter enemyCharacter) {
+    public CharacterTurn(PlayerCharacter playerCharacter, EnemyCharacter enemyCharacter, boolean isPlayerCharacter) {
         // initialise instance variables
         this.playerCharacter = playerCharacter;
         this.enemyCharacter = enemyCharacter;
+        this.isPlayerCharacter = isPlayerCharacter;
         this.distance = 0;
-        if(this.playerCharacter != null) {
+        if(isPlayerCharacter()) {
             this.speed = this.playerCharacter.getPlayerSpeed();
-        } else if(this.enemyCharacter != null) {
-            this.speed = this.playerCharacter.getPlayerSpeed();
+            System.out.println("player charturn has been created");
+        } else {
+            this.speed = this.enemyCharacter.getEnemySpeed();
+            System.out.println("ENEMY charturn has been created");
         }
     }
     
     public boolean isPlayerCharacter() {
-        if(this.playerCharacter != null){
-            return true;
-        } else {
-            return false;
-        }
+        return this.isPlayerCharacter;
     }
     
     public boolean addDistance() {
         this.distance += this.speed;
+        if(isPlayerCharacter()) {
+            System.out.println("this is a playerCharacter");
+        } else {
+            System.out.println("this is an enemyCharacter");
+        }
+        System.out.println("distance after adding " + this.speed + " speed is "+ this.distance);
         return this.isReady();
     }
     

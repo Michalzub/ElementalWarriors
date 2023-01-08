@@ -6,10 +6,10 @@ import java.util.ArrayList;
  * @version (version number or date here)
  */
 public enum Element {
-    FIRE(0.7,0.9,1.3,1),
+    FIRE(0.7,0.9,1.3,1.1),
     WATER(0.85,1.3,0.9,1),
-    EARTH(1.5,1,0.5,0.7),
-    AIR(1,0.9,1.3,1),
+    EARTH(1.5,1,0.5,1),
+    AIR(1,0.9,1,1.6),
     NONE(1,1,1,1);
     
     private double healthMultiplier;

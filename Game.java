@@ -2,6 +2,7 @@ import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Random;
+import java.lang.InterruptedException;
 
 /**
  * Vytvorí mapu, hráča a manažera, ktorý ich bude spravovať.
@@ -28,14 +29,15 @@ public class Game {
         this.menuNavigator = menuNavigator;
     }
     
-    public void changeMode() {
+    public void changeMode() throws InterruptedException {
         if (this.mode == GameMode.EXPLORATION) {
             this.mode = GameMode.COMBAT;
             this.player.hidePlayer();
             this.map.hideMap();
             Random r = new Random();
             int randomNumber = r.nextInt(EnemyGroups.values().length);
-            this.combatSupervisor = new CombatSupervisor(this.player, new EnemyParty(EnemyGroups.values()[randomNumber]),this.menuNavigator);
+            EnemyParty tempEnemyParty = new EnemyParty(EnemyGroups.values()[randomNumber]);
+            this.combatSupervisor = new CombatSupervisor(this.player, tempEnemyParty, this.menuNavigator);
         } else if (this.mode == GameMode.COMBAT) {
             this.mode = GameMode.EXPLORATION;
             this.map.showMap();
@@ -61,7 +63,7 @@ public class Game {
         return this.player;
     }
     
-    public SpaceType checkAndMove(int distanceX, int distanceY) {
+    public SpaceType checkAndMove(int distanceX, int distanceY) throws InterruptedException{
         int nextX = this.player.getPlayerX() + distanceX;
         int nextY = this.player.getPlayerY() + distanceY;
         SpaceType nextType = this.map.getSpaceType(nextX, nextY);
@@ -93,5 +95,14 @@ public class Game {
     public void hideRemnants() {
         this.player.hidePlayer();
         this.map.hideMap();
+    }
+    
+    public void showExploration() {
+        this.player.showPlayer();
+        this.map.showMap();
+    }
+    
+    public CombatSupervisor getCombatSupervisor() {
+        return this.combatSupervisor;
     }
 }

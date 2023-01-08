@@ -2,6 +2,7 @@ import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;
 import java.io.IOException;  // Import this class to handle errors
 import java.util.Scanner;
+import java.lang.InterruptedException;
 /**
  * Write a description of class PlayerControls here.
  * 
@@ -28,6 +29,7 @@ public class PlayerControls {
                 break;
             case PAUSEMENU:
                 this.menuNavigator.setMenuType(MenuType.NOMENU);
+                this.menuNavigator.hideSelectedObject();
                 break;
             case ITEMMENU:
                 this.menuNavigator.setMenuType(MenuType.COMBATMENU);
@@ -76,43 +78,53 @@ public class PlayerControls {
                 case ATTACK:
                     System.out.println("ATTACK PRESSED");
                     
+                    this.game.getCombatSupervisor().notifyWaits();
                     break;
                 case GUARD:
                     System.out.println("GUARD PRESSED");
                     
+                    this.game.getCombatSupervisor().notify();
                     break;
                 case ELEMENTALHIT:
                     System.out.println("ELEMENTALHIT PRESSED");
                     
+                    this.game.getCombatSupervisor().notify();
                     break;
                 case ELEMENTALEFFECT:
                     System.out.println("ELEMENTALEFFECT PRESSED");
                     
+                    this.game.getCombatSupervisor().notify();
                     break;
                 case ITEMS:
                     System.out.println("ITEMS PRESSED");
+                    
                     this.menuNavigator.setMenuType(MenuType.ITEMMENU);
                     break;
                 case SMALLHP:
                     System.out.println("SMALLHP PRESSED");
                     
+                    this.game.getCombatSupervisor().notify();
                     break;
                 case LARGEHP:
                     System.out.println("LARGEHP PRESSED");
                     
+                    this.game.getCombatSupervisor().notify();
                     break;
                 case SMALLMP:
                     System.out.println("SMALLMP PRESSED");
                     
+                    this.game.getCombatSupervisor().notify();
                     break;
                 case LARGEMP:
                     System.out.println("LARGEMP PRESSED");
                     
+                    this.game.getCombatSupervisor().notify();
                     break;
                 case CONTINUE:
                     this.player = this.game.getPlayer();
-                    this.menuNavigator.hideSelectedObject();
+                    this.game.showExploration();
                     this.menuNavigator.setMenuType(MenuType.NOMENU);
+                    this.menuNavigator.hideSelectedObject();
                     break;
                 case SAVEGAME:
                     break;
@@ -123,51 +135,35 @@ public class PlayerControls {
         }
     }
     
-    public void leftArrow(){
+    public void leftArrow() throws InterruptedException{
         if(isTargeting){
             
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            if(this.game.checkAndMove(-1, 0) == SpaceType.ENEMY) {
-                this.menuNavigator.setMenuType(MenuType.COMBATMENU);
-                this.menuNavigator.setSelectedObject(MenuType.COMBATMENU);
-                this.player.hidePlayer();
-            }
+            this.game.checkAndMove(-1, 0);
         }
     }
     
-    public void upArrow(){
+    public void upArrow() throws InterruptedException{
         if(this.menuNavigator.getMenuType() != MenuType.NOMENU) {
             this.menuNavigator.changeSelectedMenuObject(-1);
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            if(this.game.checkAndMove(0, -1) == SpaceType.ENEMY) {
-                this.menuNavigator.setMenuType(MenuType.COMBATMENU);
-                this.menuNavigator.setSelectedObject(MenuType.COMBATMENU);
-                this.player.hidePlayer();
-            }
+            this.game.checkAndMove(0, -1);
         }
     }
     
-    public void rightArrow(){
+    public void rightArrow() throws InterruptedException{
         if(isTargeting){
             
         } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            if(this.game.checkAndMove(1, 0) == SpaceType.ENEMY) {
-                this.menuNavigator.setMenuType(MenuType.COMBATMENU);
-                this.menuNavigator.setSelectedObject(MenuType.COMBATMENU);
-                this.player.hidePlayer();
-            }
+            this.game.checkAndMove(1, 0);
         }
     }
     
-    public void downArrow(){
+    public void downArrow() throws InterruptedException{
        if(this.menuNavigator.getMenuType() != MenuType.NOMENU){
             this.menuNavigator.changeSelectedMenuObject(1);
        } else if(this.game.getMode() == GameMode.EXPLORATION) {
-            if(this.game.checkAndMove(0, 1) == SpaceType.ENEMY) {
-                this.menuNavigator.setMenuType(MenuType.COMBATMENU);
-                this.menuNavigator.setSelectedObject(MenuType.COMBATMENU);
-                this.player.hidePlayer();
-            }
+            this.game.checkAndMove(0, 1);
        }
     }
 }

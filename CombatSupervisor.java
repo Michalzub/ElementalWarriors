@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.lang.InterruptedException;
+
 /**
  * Write a description of class CombatSupervisor here.
  * 
@@ -15,8 +17,10 @@ public class CombatSupervisor {
     private ArrayList<CharacterTurn> turnReadyCharacters;
     private int playerCount;
     private int enemyCount;
-    public CombatSupervisor(Player player, EnemyParty enemyParty, MenuNavigator menuNavigator) {
+    private boolean turnInProgress;
+    public CombatSupervisor(Player player, EnemyParty enemyParty, MenuNavigator menuNavigator) throws InterruptedException{
         this.menuNavigator = menuNavigator;
+        this.menuNavigator.hideSelectedObject();
         this.playerCount = 0;
         this.enemyCount = 0;
         this.enemyParty = enemyParty;
@@ -25,18 +29,23 @@ public class CombatSupervisor {
         this.enemyCombattants = this.enemyParty.getEnemyParty();
         this.allCombattants = new ArrayList<CharacterTurn>();
         this.turnReadyCharacters = new ArrayList<CharacterTurn>();
-        
         for(PlayerCharacter character : this.playerCombattants) {
-            this.allCombattants.add(new CharacterTurn(character, null));
+            CharacterTurn tempCharTurn = new CharacterTurn(character, null, true);
+            this.allCombattants.add(tempCharTurn);
             this.playerCount += 1;
         }
         for(EnemyCharacter character : this.enemyCombattants) {
-            this.allCombattants.add(new CharacterTurn(null, character));
+            CharacterTurn tempCharTurn = new CharacterTurn(null, character, false);
+            this.allCombattants.add(tempCharTurn);
+            this.enemyCount += 1;
         }
+        this.rollInitiative();
     }
     
-    public void rollInitiative() {
-        while(this.playerCombattants.length > 0 || this.enemyCombattants.size() > 0){
+    public void rollInitiative() throws InterruptedException{
+        System.out.println("We got to roll initiative");
+        while(this.playerCount > 0 || this.enemyCount > 0){
+            System.out.println("we are in the while loop!");
             for(CharacterTurn character : this.allCombattants) {
                 if(character.addDistance() ) {
                     this.turnReadyCharacters.add(character);
@@ -44,10 +53,16 @@ public class CombatSupervisor {
             }
             this.turnReadyCharacters = this.getSortedList(this.turnReadyCharacters);
             for(CharacterTurn character : this.turnReadyCharacters) {
+                System.out.println(character);
+                System.out.println(character.getDistance());
+            }
+            for(CharacterTurn character : this.turnReadyCharacters) {
                 if(character.isPlayerCharacter()){
                     this.playerTurn(character.getPlayerCharacter());
+                    System.out.println("player turn");
                 } else {
                     this.enemyTurn(character.getEnemyCharacter());
+                    System.out.println("enemy turn");
                 }
             }
         }
@@ -76,11 +91,17 @@ public class CombatSupervisor {
         return sortedCharacterList;
     }
     
-    public void playerTurn(PlayerCharacter character) {
+    public void playerTurn(PlayerCharacter character) throws InterruptedException{
         this.menuNavigator.setMenuType(MenuType.COMBATMENU);
+        this.turnInProgress = true;
+        
     }
     
-    public void enemyTurn(EnemyCharacter character) {
+    public void enemyTurn(EnemyCharacter character) throws InterruptedException{
+        System.out.println("test");
+    }
+    
+    public void notifyWaits() {
         
     }
 }
